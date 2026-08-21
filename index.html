@@ -201,12 +201,12 @@
           <div class="pill-row">
             <span class="pill">生产端: 谁在做</span>
             <span class="pill">消费端: 谁在买</span>
-            <span class="pill">营销端: 竞品 / 广告 / 流程</span>
+            <span class="pill">管线：传统管线和tripo加入后管线</span>
             <span class="pill">地区: 只在需求差异处补充</span>
           </div>
           <div class="framework-grid">
             <div class="framework-box"><strong>面向3D打印</strong><p>3D 打印、小产品和家居装饰要优先讲水密、白模、拆分、STL/3MF 和打印成功率。</p></div>
-            <div class="framework-box"><strong>面向实时预览</strong><p>游戏、AR / VR、电商实时预览优先讲 Smart Mesh P2.0 原生四边面、可控面数、局部编辑、批量变体与 GLB / USDZ；只有游戏资产强调桥接到 Unity / UE。</p></div>
+            <div class="framework-box"><strong>面向实时预览</strong><p>游戏、AR / VR、电商实时预览优先讲 Smart Mesh P2.0 原生四边面、可控面数、局部编辑、批量变体与 GLB / USDZ；只有游戏资产强调桥接到引擎。</p></div>
             <div class="framework-box"><strong>面向高精度渲染</strong><p>室内、影视、电商主图、时尚视觉优先讲 H3.1、PBR、材质、灯光和高保真展示。</p></div>
             <div class="framework-box"><strong>面向结构展示</strong><p>工业与建筑可用 Tripo 做概念和展示，但不能把 AI 网格当作 CAD/BIM 工程母数据。</p></div>
           </div>
@@ -221,10 +221,10 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td>3D 打印</td><td>H3.1 高精度模型生成&amp;高模雕刻、导出白模、拆分补全、STL / 3MF、Bambu Studio</td><td>绑骨与动画、Smart Mesh 生成低模</td><td>打印优先水密、闭合、厚度与高保真真实几何</td></tr>
+                <tr><td>3D 打印</td><td>H3.1 高精度模型生成、导出白模、拆分补全、STL / 3MF、Bambu Studio</td><td>绑骨与动画、Smart Mesh 生成低模</td><td>打印优先水密、闭合、厚度与高保真真实几何</td></tr>
                 <tr><td>游戏</td><td>Smart Mesh P2.0 原生四边面、可控面数、局部编辑、一次最多 4 个变体、FBX / GLB、DCC 桥接到 Unity / UE</td><td>H3.1 约 200 万面直上引擎、全资产 8K</td><td>实时渲染受性能、包体与显存预算限制</td></tr>
                 <tr><td>室内设计</td><td>H3.1、PBR / 8K、材质 / 灯光 / 相机预览</td><td>绑骨与动画、过度低模</td><td>静态空间更看材质、灯光、比例与曲面细节</td></tr>
-                <tr><td>影视动画</td><td>H3.1、多视图生成、绑骨与动画、USD / FBX、DCC 桥接到 Blender / Maya / 3ds Max</td><td>打印拆分、Bambu Studio、纯自动成片</td><td>高质量镜头仍需绑定、LookDev 和合成</td></tr>
+                <tr><td>影视动画</td><td>H3.1、多视图生成高精度预演、P2.0绑骨与动画、USD / FBX、DCC 桥接到 Blender / Maya / 3ds Max</td><td>打印拆分、Bambu Studio、纯自动成片</td><td>高质量镜头仍需绑定、LookDev 和合成</td></tr>
                 <tr><td>时尚设计</td><td>H3.1 高精度模型、PBR / 8K 纹理、纹理编辑、多视图生成、OBJ / FBX / GLB</td><td>3D 打印白模、工业 CAD、复杂骨骼</td><td>时尚更看轮廓、材质、搭配与视觉传播</td></tr>
                 <tr><td>产品电商</td><td>H3.1 商品渲染、Smart Mesh P2.0、GLB / USDZ 导出、一次最多 4 个变体</td><td>打印链路、重工业 CAD、角色动画</td><td>电商核心是展示、转化与加载速度</td></tr>
                 <tr><td>工业设计</td><td>H3.1 高精度模型、重拓扑、Smart Mesh P2.0 快速展示、Blender / 3ds Max 渲染评审、GLB / OBJ / FBX</td><td>替代 NURBS 工业生产</td><td>工程生产仍依赖 CAD / NURBS / 公差数据</td></tr>
@@ -330,7 +330,7 @@
       <ul><li>直播 / 社媒：创作者用游戏角色和场景做短视频、封面、虚拟直播背景。</li>
       <li>虚拟世界：买房间组件、互动道具、舞台和社交空间素材，做 Roblox / VRChat / 元宇宙房间。</li>
       <li>UGC / MOD：给创作者提供可直接上传或二次编辑的头像、皮肤、地图组件和装饰件。</li>
-    </ul><p><b>代表平台：</b><b>Unity Asset Store</b> 更适合 Unity 原生项目、移动游戏、独立开发和快速原型；<b>Fab / Unreal 生态</b> 更适合 Unreal、3A 外包、影视化实时内容和高保真场景；<b>Sketchfab / Web 预览链路</b> 更适合浏览器看样、资产评审、教育和营销展示；<b>CGTrader / TurboSquid</b> 更适合跨软件买卖、外包补件和非引擎优先的模型采购。</p><p><b>消费市场背景：</b>资产消费正在从专业游戏公司扩展到独立开发者、UGC 创作者、虚拟社交用户和教育用户</p><p><b>需求原因</b>普通玩家购买模型资产更多是出于兴趣或者学习目的。</p></div>
+    </ul><p><b>代表平台：</b><b>Unity Asset Store</b> 更适合 Unity 原生项目、移动游戏、独立开发和快速原型；<b>Fab / Unreal 生态</b> 更适合 Unreal、3A 外包、影视化实时内容和高保真场景；<b>Sketchfab / Web 预览链路</b> 更适合浏览器看样、资产评审、教育和营销展示；<b>CGTrader / TurboSquid</b> 更适合跨软件买卖、外包补件和非引擎优先的模型采购。</p><p><b>需求原因</b>普通玩家购买模型资产更多是出于兴趣或者学习目的。</p></div>
   </div>
   <div class="pipeline-map traditional-pipeline">
     <h3>传统三维管线</h3>
@@ -386,7 +386,7 @@
         <div class="selling-point"><strong>面数与拓扑</strong>三角面最高 50K；原生四边面最高 25K，edge loop 规整，适配实时加载与后续 LOD</div>
         <div class="selling-point"><strong>多生成与局部编辑</strong>同一输入一次最多生成 4 个变体；局部编辑只重试一个部位，不影响其他部分</div>
         <div class="selling-point"><strong>纹理生成</strong>基于文字、参考图或多视图生成纹理</div>
-        <div class="selling-point"><strong>DCC 桥接到 UE &amp; Unity</strong>导出后桥接到 UE &amp; Unity，并可在专业内容制作工具中继续处理</div>
+        <div class="selling-point"><strong>DCC 桥接到 游戏引擎</strong>导出后桥接到游戏引擎，并可在专业内容制作工具中继续处理</div>
       </div>
     </div>
     <div class="pipeline-pair">
@@ -409,10 +409,11 @@
     </div>
   </div>
   <div class="feature-grid feature-grid-single">
-    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li> H3.1 高精度模型：最高约 200 万面，不能直接作为实时游戏引擎交付资产</li><li>高面数模型直接绑定：绑定和动画前应先减面 / 重拓扑，避免性能和拓扑问题</li><li>全资产 8K 贴图：只适合核心资产静态展示，泛用会增加包体和显存压力</li><li>STL / 3MF：不支持导出骨骼和动画，不适合作为游戏动画交付格式</li></ul></div>
+    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li> H3.1 高精度模型：最高约 200 万面，不能直接作为实时游戏引擎交付资产。</li><li>高面数模型直接绑定：绑定和动画前应先减面 / 重拓扑，避免性能和拓扑问题</li><li>全资产 8K 贴图：只适合核心资产静态展示，泛用会增加包体和显存压力，一般2K-4K</li><li>STL / 3MF：不支持导出骨骼和动画，不适合作为游戏动画交付格式</li></ul></div>
   </div>
   <div class="region"><strong>地区情况</strong><p>北美和欧洲更适合中高预算独立游戏、虚幻引擎、虚拟制作和外包采购；日本更偏角色、怪物、二次元、移动游戏和轻量素材；韩国更偏角色、美术效率、网游运营和虚拟社交；东南亚和拉美更常见低成本原型、手游、UGC 和素材拼装型团队。</p></div>
-      <figure class="industry-visual"><img src="image/2.png" alt="游戏行业配图"><figcaption>游戏场景白膜</figcaption></figure>
+      <figure class="industry-visual"><img src="image/2.jpg" alt="游戏行业配图"><figcaption>游戏模型对拓扑要求很高直接影响呈现效果</figcaption></figure>
+       <figure class="industry-visual"><img src="image/10.jpg" alt="游戏行业配图2"><figcaption>游戏场景面数一般偏低，需要控制显卡消耗，从上到下：渲染场景，白膜，线框场景</figcaption></figure>
 </section>
 
 <section class="card section" id="interior">
@@ -465,7 +466,7 @@
         <div class="selling-point"><strong>PBR / 纹理质量</strong>控制纹理质量、类型以及是否生成 PBR</div>
         <div class="selling-point"><strong>纹理编辑 / 升级纹理</strong>提升材质清晰度、细节度和整体质感</div>
         <div class="selling-point"><strong>HDRI / 显示模式</strong>观察不同环境光和材质表现</div>
-        <div class="selling-point"><strong>DCC 桥接到 Blender / 3ds Max / SketchUp</strong>导出后进入家居建模、材质、灯光与效果图流程；实时交付则另走 GLB / Web / AR 预览</div>
+        <div class="selling-point"><strong>DCC 桥接</strong>导出后进入家居建模、材质、灯光与效果图流程；实时交付则另走 GLB / Web / AR 预览</div>
       </div>
     </div>
     <div class="pipeline-pair">
@@ -488,10 +489,10 @@
     </div>
   </div>
   <div class="feature-grid feature-grid-single">
-    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li>智能网格（Smart Mesh）：低面数可能无法充分呈现家具曲面与细节</li><li>绑骨与动画：家具和室内模型通常为静态展示，不需要骨骼绑定和动画</li></ul></div>
+    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li>智能网格（Smart Mesh）：低面数可能无法充分呈现家具曲面与细节。但如果是VRAR，需要Smart Mesh</li><li>绑骨与动画：家具和室内模型通常为静态展示，不需要骨骼绑定和动画</li></ul></div>
   </div>
   <div class="region"><strong>地区情况</strong><p>英国法国适合高端独立站和自由职业设计师；韩国适合现代家居和快速提案；巴西适合家装改造和社媒展示；德国做实时漫游时要强调轻量和格式稳定。</p></div>
-      <figure class="industry-visual"><img src="image/3.png" alt="室内设计行业配图"><figcaption>室内白膜渲染</figcaption></figure>
+      <figure class="industry-visual"><img src="image/3.png" alt="室内设计行业配图"><figcaption>室内白膜渲染，对渲染精度要求高</figcaption></figure>
 </section>
 
 <section class="card section" id="film">
@@ -574,10 +575,11 @@
     </div>
   </div>
   <div class="feature-grid feature-grid-single">
-    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li>智能网格（Smart Mesh）：低面数无法满足高保真细节和影视级渲染</li><li>非 T-pose 人类 / 非标准站立四足模型绑骨：不在当前绑骨适用范围内</li><li>STL / 3MF：不支持导出骨骼和动画，不适合作为影视动画交付格式</li></ul></div>
+    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li>智能网格（Smart Mesh）：用于生成拓扑角色后修改，但低面数无法满足高保真细节和影视级渲染，目前在番剧，ai白膜漫剧较多。</li><li>非 T-pose 人类 / 非标准站立四足模型绑骨：不在当前绑骨适用范围内</li><li>STL / 3MF：不支持导出骨骼和动画，不适合作为影视动画交付格式</li></ul></div>
   </div>
   <div class="region"><strong>地区情况</strong><p>日本适合二次元、怪物、三渲二和 VTuber；韩国适合高完成度角色短片和团队提效；法国偏作者感和艺术动画；北美适合独立短片和游戏宣传。</p></div>
       <figure class="industry-visual"><img src="image/4.png" alt="影视动画行业配图"><figcaption>控制网格服务变形，渲染阶段再细分</figcaption></figure>
+            <figure class="industry-visual"><img src="image/10.png" alt="影视动画行业配图"><figcaption>影视行业渲染层：为了细节表现配合置换贴图与细分，面数在百万和千万级别</figcaption></figure>
 </section>
 
 <section class="card section" id="fashion">
@@ -705,9 +707,9 @@
         <div class="track-label">对应卖点</div>
         <div class="selling-point"><strong>Smart Mesh 智能网格 P2.0</strong>用于快速生成、实时加载的商品预览 Web 页面</div>
         <div class="selling-point"><strong>面数与拓扑设置</strong>原生四边面最高 25K、三角面最高 50K，适合 Web 应用和快速加载</div>
+        <div class="selling-point"><strong>纹理分辨率选择</strong>导出时按平台体积和清晰度选择</div>
         <div class="selling-point"><strong>GLB</strong>适用于 Web，内嵌纹理</div>
         <div class="selling-point"><strong>USDZ</strong>适合 iOS AR Quick Look</div>
-        <div class="selling-point"><strong>纹理分辨率选择</strong>导出时按平台体积和清晰度选择</div>
       </div>
     </div>
   </div>
@@ -827,7 +829,7 @@
         <div class="selling-point"><strong>文本生成模型</strong>用文字描述快速生成外观概念</div>
         <div class="selling-point"><strong>HD Model</strong>用于高细节建筑展示模型</div>
         <div class="selling-point"><strong>导出格式</strong>OBJ / FBX / GLB 进入 DCC 或实时展示流程</div>
-        <div class="selling-point"><strong>DCC 桥接到 Rhino / SketchUp / Blender</strong>导出后进入建筑可视化、材质灯光、汇报动画或实时漫游制作；不替代 BIM 工程母数据</div>
+        <div class="selling-point"><strong>DCC 桥接</strong>导出后进入建筑可视化、材质灯光、汇报动画或实时漫游制作；不替代 BIM 工程母数据</div>
       </div>
     </div>
 
