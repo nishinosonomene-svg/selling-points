@@ -1,0 +1,927 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tripo 九行业需求卖点整理 P2.0</title>
+  <style>
+    :root{
+      --bg:#fbfaff;
+      --panel:#ffffff;
+      --panel-soft:#f6f3ff;
+      --line:#e3def2;
+      --text:#1f1730;
+      --muted:#655d78;
+      --accent:#6d43e5;
+      --accent-strong:#4f24ca;
+      --accent-soft:#eee9ff;
+      --green:#15a08a;
+      --warn:#fff4d2;
+      --shadow:0 16px 42px rgba(55,34,120,.10);
+      --radius-lg:24px;
+      --radius-md:18px;
+      --radius-sm:12px;
+      --max:1440px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top left, rgba(109,67,229,.10), transparent 28%),
+        radial-gradient(circle at 88% 10%, rgba(255,210,0,.12), transparent 24%),
+        linear-gradient(180deg,#fff 0%, var(--bg) 38%, #f8f6ff 100%);
+      color:var(--text);
+      font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+      line-height:1.75;
+    }
+    a{color:inherit}
+    .page{width:min(var(--max), calc(100% - 32px));margin:0 auto;padding:24px 0 48px}
+    .layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:24px;align-items:start}
+    .sidebar{position:sticky;top:20px}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);min-width:0}
+    .toc,.hero,.summary,.section,.footer{padding:22px}
+    .toc-brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.02rem;margin-bottom:12px;letter-spacing:.01em}
+    .tripo-mark{display:inline-flex;align-items:center;justify-content:center;width:31px;height:22px;border-radius:7px;background:#ffd400;color:#19151f;font-size:.72rem;font-weight:900;letter-spacing:-.06em;box-shadow:0 4px 12px rgba(255,212,0,.3)}
+    .toc-subtitle{margin:0 0 14px;color:var(--muted);font-size:.92rem}
+    .toc-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+    .toc-list a{display:block;padding:10px 12px;border-radius:12px;text-decoration:none;border:1px solid transparent;transition:.2s ease;font-size:.94rem}
+    .toc-list a:hover{background:var(--accent-soft);border-color:#d8cef9;color:var(--accent)}
+    .toc-note{margin-top:16px;padding:14px;border-radius:14px;background:var(--panel-soft);border:1px solid var(--line);color:var(--muted);font-size:.9rem}
+    .main{display:grid;gap:20px;min-width:0}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+    .hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:20px;align-items:start;min-width:0}
+    h1{margin:0 0 12px;font-size:clamp(2rem,4.6vw,3.6rem);line-height:1.08;letter-spacing:-.04em}
+    .hero p{margin:0;color:var(--muted);font-size:1rem;max-width:82ch}
+    .hero-side{display:grid;gap:12px;min-width:0}
+    .meta-box{padding:16px;border-radius:16px;border:1px solid var(--line);background:var(--panel-soft)}
+    .meta-box strong{display:block;margin-bottom:6px;font-size:.98rem}
+    .meta-box span{color:var(--muted);font-size:.92rem}
+    .summary,.section,.footer{padding:24px}
+    .summary h2,.section h2{margin:0}
+    .summary-lead{margin:10px 0 18px;color:var(--muted)}
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 18px}
+    .pill{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:#f3f7fd;border:1px solid var(--line);color:#31405d;font-size:.86rem;line-height:1.2}
+    .framework-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}
+    .framework-box{padding:16px;border-radius:16px;background:var(--panel-soft);border:1px solid var(--line);min-height:132px}
+    .framework-box strong{display:block;margin-bottom:8px;font-size:1rem}
+    .framework-box p{margin:0;color:var(--muted);font-size:.92rem}
+    .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:#fff;max-width:100%;min-width:0}
+    table{width:100%;border-collapse:collapse;min-width:1120px}
+    th,td{padding:13px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:.9rem;line-height:1.65}
+    th{background:#f6f3ff;color:#38246e;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
+    tr:last-child td{border-bottom:0}
+    .section-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+    .section-no{display:inline-flex;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:.8rem;font-weight:700;letter-spacing:.06em;margin-bottom:8px}
+    .section h2{font-size:1.95rem;line-height:1.12;letter-spacing:-.03em}
+    .section-head p{margin:0;max-width:42ch;color:var(--muted);font-size:.95rem}
+    .lane-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .lane,.feature-card,.region,.note{border:1px solid var(--line);border-radius:18px;background:#fff;min-width:0}
+    .lane{padding:18px;background:linear-gradient(180deg,#fff 0%,#fcfbff 100%)}
+    .lane h3{margin:0 0 10px;font-size:1.02rem}
+    .lane p{margin:0 0 10px;color:var(--muted);font-size:.92rem}
+    .lane ul{margin:0;padding-left:18px;color:var(--muted)}
+    .lane li{margin:4px 0;font-size:.9rem}
+    .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+    .feature-card{padding:16px;background:var(--panel-soft)}
+    .feature-card strong{display:block;margin-bottom:8px}
+    .feature-card ul{margin:0;padding-left:18px;color:var(--muted)}
+    .feature-card li{margin:4px 0;font-size:.9rem}
+    .industry-visual{margin:18px 0 0;border:1px solid var(--line);border-radius:20px;background:#fff;overflow:hidden}
+    .industry-visual img{display:block;width:100%;height:auto;max-height:640px;object-fit:contain;background:#f7f9fc}
+    .industry-visual figcaption{padding:10px 14px;color:var(--muted);font-size:.86rem;border-top:1px solid var(--line);background:var(--panel-soft)}
+    .pipeline-map{margin-top:14px;padding:18px;border:1px solid #ddd2ff;border-radius:20px;background:linear-gradient(180deg,#fcfbff 0%,#f6f2ff 100%);overflow:hidden}
+    .pipeline-map h3{margin:0 0 14px;font-size:1.05rem}
+    .pipeline-pair{display:grid;gap:8px;margin-top:14px}
+    .pipeline-pair:first-of-type{margin-top:0}
+    .pipeline-track{display:grid;grid-template-columns:104px repeat(5,minmax(0,1fr));gap:8px;align-items:stretch}
+    .traditional-pipeline .pipeline-track{display:flex;flex-wrap:nowrap;gap:8px}
+    .traditional-pipeline .track-label{flex:0 0 104px}
+    .traditional-pipeline .stage{flex:1 1 0;min-width:0;font-size:.8rem;font-weight:600;padding:10px 8px}
+    .traditional-pipeline .pipeline-pair{gap:10px}
+    .traditional-pipeline .pipeline-branches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+    .traditional-pipeline .branch{padding:12px 14px;border:1px solid #dfd5fc;border-radius:14px;background:#fff;color:#574279;font-size:.86rem;line-height:1.55}
+    .traditional-pipeline .branch strong{display:block;color:var(--accent-strong);margin-bottom:4px}
+    .track-label{display:flex;align-items:center;font-weight:700;color:#483274;font-size:.88rem}
+    .stage,.selling-point{position:relative;display:flex;align-items:center;justify-content:center;min-height:54px;padding:10px 12px;border-radius:14px;text-align:center;font-size:.86rem;line-height:1.35}
+    .stage{background:#fff;border:1px solid #cdbffd;color:#3d2868;font-weight:700;box-shadow:0 8px 18px rgba(109,67,229,.07)}
+    .stage:not(:last-child)::after{content:"";position:absolute;left:calc(100% + 2px);top:50%;width:8px;height:2px;background:var(--accent);transform:translateY(-50%)}
+    .selling-point{background:var(--accent-soft);border:1px solid #dbd0fb;color:#534173}
+    .selling-point strong{display:block;color:var(--accent-strong)}
+    .pipeline-note{margin:12px 0 0;color:var(--muted);font-size:.86rem}
+    .feature-grid-single{grid-template-columns:1fr}
+    .print-intro-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .tag{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:#f4f7fc;color:#33415f;font-size:.85rem;line-height:1.2}
+    .region{margin-top:14px;padding:14px 16px;background:#f8f5ff;border-color:#e1d8fb}
+    .region strong{display:block;margin-bottom:6px;color:var(--accent-strong)}
+    .region p{margin:0;color:#5b4a7d;font-size:.92rem}
+    .note{margin-top:14px;padding:14px 16px;background:linear-gradient(180deg,#fffdf5 0%,#fffaf0 100%);border-color:#f1e1b2}
+    .note strong{display:block;margin-bottom:6px;color:#7a5d08}
+    .note p{margin:0;color:#6f5a1d;font-size:.92rem}
+    details{margin-top:14px;border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden}
+    summary{list-style:none;cursor:pointer;padding:14px 16px;font-weight:600;background:#f6f3ff;color:#38246e}
+    summary::-webkit-details-marker{display:none}
+    .details-body{padding:0 16px 16px;color:var(--muted);font-size:.92rem}
+    .sources{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+    .source-list{margin:0;padding-left:18px;color:var(--muted)}
+    .source-list li{margin:4px 0}
+    @media (max-width:1180px){
+      .layout,.hero-grid,.framework-grid,.lane-grid,.feature-grid,.sources{grid-template-columns:1fr}
+      .sidebar{position:static}
+    }
+    @media (max-width:720px){
+      .page{width:min(100% - 20px, var(--max))}
+      .toc,.hero,.summary,.section,.footer{padding:18px}
+      .section-head{flex-direction:column}
+      .section h2{font-size:1.65rem}
+      .pipeline-track{grid-template-columns:1fr}
+      .traditional-pipeline .pipeline-track{flex-wrap:wrap}
+      .traditional-pipeline .stage{flex:1 1 100%}
+      .traditional-pipeline .pipeline-branches{grid-template-columns:1fr}
+      .track-label{min-height:auto}
+      .stage:not(:last-child)::after{display:none}
+      table{min-width:980px}
+    }
+    .theme-toggle{appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;margin:0 0 14px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--panel-soft);color:var(--text);font:inherit;font-size:.88rem;font-weight:700;cursor:pointer;transition:.2s ease}
+    .theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
+    body[data-theme="dark"]{--bg:#09090d;--panel:#131219;--panel-soft:#1b1924;--line:#312d3b;--text:#f3f0f7;--muted:#b7afc0;--accent:#ffd400;--accent-strong:#ffe65b;--accent-soft:#302a0b;--shadow:0 18px 46px rgba(0,0,0,.34);background:radial-gradient(circle at top left,rgba(255,212,0,.12),transparent 25%),radial-gradient(circle at 88% 10%,rgba(120,78,255,.13),transparent 25%),linear-gradient(180deg,#08080b 0%,var(--bg) 58%,#111014 100%)}
+    body[data-theme="dark"] .toc-list a:hover{border-color:#665400;color:var(--accent)}
+    body[data-theme="dark"] .lane{background:linear-gradient(180deg,#17151d 0%,#111015 100%)}
+    body[data-theme="dark"] .table-wrap,body[data-theme="dark"] .lane,body[data-theme="dark"] .feature-card,body[data-theme="dark"] .region,body[data-theme="dark"] .note,body[data-theme="dark"] details,body[data-theme="dark"] .stage,body[data-theme="dark"] .traditional-pipeline .branch{background:#15131a}
+    body[data-theme="dark"] th,body[data-theme="dark"] summary{background:#1c1924;color:#f2e8a7}
+    body[data-theme="dark"] .pipeline-map{border-color:#5a4b13;background:linear-gradient(180deg,#1a1814 0%,#121116 100%)}
+    body[data-theme="dark"] .stage{border-color:#6b5914;color:#f4e8a3;box-shadow:none}
+    body[data-theme="dark"] .selling-point{border-color:#645414;background:#272109;color:#e3dbbe}
+    body[data-theme="dark"] .traditional-pipeline .branch{border-color:#3d3846;color:#c8c0d0}
+    body[data-theme="dark"] .region{border-color:#4a4033;background:#1d1915}
+    body[data-theme="dark"] .region p{color:#c8bfae}
+    body[data-theme="dark"] .theme-toggle{background:#211d10;border-color:#5d4d12;color:#ffe675}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="card toc">
+          <div class="toc-brand"><span class="tripo-mark">TRIPO</span><span>九行业卖点</span></div>
+          <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">☾ 切换暗夜预览</button>
+          <ul class="toc-list">
+            <li><a href="#overview">一页总览</a></li>
+            <li><a href="#print">1. 3D 打印</a></li>
+            <li><a href="#game">2. 游戏</a></li>
+            <li><a href="#interior">3. 室内设计</a></li>
+            <li><a href="#film">4. 影视动画</a></li>
+            <li><a href="#fashion">5. 时尚设计</a></li>
+            <li><a href="#commerce">6. 产品电商</a></li>
+            <li><a href="#industrial">7. 工业设计</a></li>
+            <li><a href="#architecture">8. 建筑</a></li>
+            <li><a href="#arvr">9. AR / VR</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="main">
+        <section class="card hero">
+          <div class="eyebrow">Tripo nine-industry analysis</div>
+          <div class="hero-grid">
+            <div>
+              <h1>Tripo 九行业分层卖点整理</h1>
+              <p>九个行业：3D 打印、游戏、室内设计、影视动画、时尚设计、产品电商、工业设计、建筑、AR / VR。每个行业都按生产端、消费端、落地端拆解，并明确在行业场景下哪些功能该重点讲，哪些功能不常用，以及为什么不常用。</p>
+            </div>
+            <div class="hero-side">
+              <div class="meta-box"><strong>H3.1 功能方向</strong><span>高精度模型生成与高模雕刻：最高约 200 万面，侧重高保真几何细节、打印与镜头级静态渲染。</span></div>
+              <div class="meta-box"><strong>Smart Mesh P2.0 主卖点</strong><span>原生四边面 / 三角面可选，三角面最高 50K、原生四边面最高 25K；支持对称性、比例、局部编辑、一次最多 4 个变体，以及主视图必填、其他角度选填的多视图输入。DCC 桥接应按行业进入对应的后续制作流程。</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card summary" id="overview">
+          <h2>一页总览：九行业功能优先级</h2>
+          <div class="pill-row">
+            <span class="pill">生产端: 谁在做</span>
+            <span class="pill">消费端: 谁在买</span>
+            <span class="pill">营销端: 竞品 / 广告 / 流程</span>
+            <span class="pill">地区: 只在需求差异处补充</span>
+          </div>
+          <div class="framework-grid">
+            <div class="framework-box"><strong>面向3D打印</strong><p>3D 打印、小产品和家居装饰要优先讲水密、白模、拆分、STL/3MF 和打印成功率。</p></div>
+            <div class="framework-box"><strong>面向实时预览</strong><p>游戏、AR / VR、电商实时预览优先讲 Smart Mesh P2.0 原生四边面、可控面数、局部编辑、批量变体与 GLB / USDZ；只有游戏资产强调桥接到 Unity / UE。</p></div>
+            <div class="framework-box"><strong>面向高精度渲染</strong><p>室内、影视、电商主图、时尚视觉优先讲 H3.1、PBR、材质、灯光和高保真展示。</p></div>
+            <div class="framework-box"><strong>面向结构展示</strong><p>工业与建筑可用 Tripo 做概念和展示，但不能把 AI 网格当作 CAD/BIM 工程母数据。</p></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>行业</th>
+                  <th>最需要功能</th>
+                  <th>不常用功能</th>
+                  <th>为什么不常用</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>3D 打印</td><td>H3.1 高精度模型生成&amp;高模雕刻、导出白模、拆分补全、STL / 3MF、Bambu Studio</td><td>绑骨与动画、Smart Mesh 生成低模</td><td>打印优先水密、闭合、厚度与高保真真实几何</td></tr>
+                <tr><td>游戏</td><td>Smart Mesh P2.0 原生四边面、可控面数、局部编辑、一次最多 4 个变体、FBX / GLB、DCC 桥接到 Unity / UE</td><td>H3.1 约 200 万面直上引擎、全资产 8K</td><td>实时渲染受性能、包体与显存预算限制</td></tr>
+                <tr><td>室内设计</td><td>H3.1、PBR / 8K、材质 / 灯光 / 相机预览</td><td>绑骨与动画、过度低模</td><td>静态空间更看材质、灯光、比例与曲面细节</td></tr>
+                <tr><td>影视动画</td><td>H3.1、多视图生成、绑骨与动画、USD / FBX、DCC 桥接到 Blender / Maya / 3ds Max</td><td>打印拆分、Bambu Studio、纯自动成片</td><td>高质量镜头仍需绑定、LookDev 和合成</td></tr>
+                <tr><td>时尚设计</td><td>H3.1 高精度模型、PBR / 8K 纹理、纹理编辑、多视图生成、OBJ / FBX / GLB</td><td>3D 打印白模、工业 CAD、复杂骨骼</td><td>时尚更看轮廓、材质、搭配与视觉传播</td></tr>
+                <tr><td>产品电商</td><td>H3.1 商品渲染、Smart Mesh P2.0、GLB / USDZ 导出、一次最多 4 个变体</td><td>打印链路、重工业 CAD、角色动画</td><td>电商核心是展示、转化与加载速度</td></tr>
+                <tr><td>工业设计</td><td>H3.1 高精度模型、重拓扑、Smart Mesh P2.0 快速展示、Blender / 3ds Max 渲染评审、GLB / OBJ / FBX</td><td>替代 NURBS 工业生产</td><td>工程生产仍依赖 CAD / NURBS / 公差数据</td></tr>
+                <tr><td>建筑</td><td>H3.1 建筑展示模型；Smart Mesh P2.0 快速加载展示；多视图提升外观一致性；OBJ / FBX / GLB 进入 DCC 或实时展示流程</td><td>角色绑定、打印支撑、游戏角色动画</td><td>建筑主体以概念与展示为主，不是角色或打印管线</td></tr>
+                <tr><td>AR / VR</td><td>Smart Mesh P2.0 原生四边面、可控面数、局部编辑、一次最多 4 个变体、GLB / USDZ</td><td>H3.1 高面数直接上头显、8K 泛用</td><td>XR 对帧率、体积与交互稳定性极敏感</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+                <section class="card section" id="print">
+  <div class="section-head"><div><span class="section-no">01 / 3D PRINTING</span><h2>3D 打印</h2></div><p>核心是“能打印、少失败、可定制”。最终交付：制造真实打印实体</p></div>
+  <div class="lane-grid print-intro-grid">
+    <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>创客、教师、学生、Etsy 小店、STL 作者、打印工作室、家居 DIY 用户、小产品设计师。</p>
+      <p><b>应用场景：</b></p>
+      <ul><li>桌游微缩：人物、怪物、地形、战棋配件。</li>
+        <li>手办 / 雕像：IP手办、bust、宠物/情侣/偶像定制摆件、节日礼物。</li>
+        <li>教育：教具、结构模型、科学模型。</li>
+        <li>功能件：替换零件、收纳、支架、夹具、家居小配件。</li>
+        <li>配件收纳：桌游 insert、卡牌盒、模型工具架。</li>
+        <li>Diorama微缩：叙事场景、战场地形、恐怖/克苏鲁场景、历史/中世纪场景。</li></ul>
+      <p><b>利润需求最高</b>：</p><ul><li><b>STL 文件</b>（零材料、无库存、可重复销售）。</li>
+                  <li><b>替换零件</b>（小成本解决大损失，利润空间最高）。</li>
+                  <li><b>钥匙扣/定制礼物</b>（低成本、高频送礼、容易批量）</li>
+                  <li><b>首饰/时尚配饰</b>（低材料成本 + 高感知价值）。</li>
+                  <li><b>微缩模型/桌游件</b>（收藏、游戏和社群驱动）。</li>
+                  <li><b>玩具/fidget/动物摆件</b>（可玩、可拍、容易跟热点）。</li>
+                  <li><b>手机和游戏配件</b>（支架、手柄架、卡带盒、人体工学握把）。</li>
+                  <li><b>家居/园艺/工具收纳</b>（线材整理、墙钩、bag clip、测量勺、工具架）。</li></ul>
+                  <p><b>痛点需求</b>：模型必须可打印，水密、闭合无破面。分件友好，方便上色运输装配。支撑可靠。交付格式全。无侵权风险。</p></div>
+          <div class="lane"><h3>消费端</h3><p><b>用户画像：</b>收藏者、礼品买家、桌游/TRPG 玩家、宠物/情侣定制用户。礼品买家、桌游/TRPG 玩家</p><p><b>应用场景：</b></p>
+              <ul><li> <b>Etsy</b>（全球最大手工艺品个性化定制，欧美用户多，更适合创意、礼品和个性化溢价，典型是 articulated animals、fidget toys、婚礼蛋糕 topper、骰子盒/展示架）。</li>
+                <li><b>Amazon Handmade </b>（更适合卖高频实用件，典型是 cable organizer、wall hook、phone stand、厨房夹具）</li>
+                <li><b>Facebook Marketplace</b>（更适合本地测试和不适合跨境运输的订单，典型是 nameplate、garage tool holder、pet tag、car vent mount。）</li>
+                <li><b>Cults</b>（法国平台在法国信号特别强）</li> 
+                <li><b>Printables</b>（捷克的3D 打印模型分享社区，德国用户多，日常实用、功能零件）</li>
+                <li> <b>MyMiniFactory和Thingiverse </b>（都是一家伦敦公司，因为对买卖双方抽额外佣金，导致价格更高，适合追求高质量的艺术品、游戏微缩模型、桌游角色。免费STL模型最多）</li>
+                <li><b>Patreon</b>（众筹平台，个性化定制需求）</li></ul>
+                <p><b>需求原因</b>：比官方成品更便宜或更个性化。能快速获得定制角色、怪物、地形、礼物、宠物纪念品。功能件能解决具体问题，如收纳、替换零件、桌面整理。</p>
+                <p>要么自己买STL去DIY要么买成品。</p></div>
+          </div>
+          <div class="pipeline-map traditional-pipeline">
+    <h3>传统三维管线</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">建模与模型检查</div>
+        <div class="stage">参考图 / 草图 / CAD 设计</div>
+        <div class="stage">建模或扫描建模</div>
+        <div class="stage">检查水密 / 闭合 / 非流形边 / 破面</div>
+        <div class="stage">修复法线 / 厚度 / 尺寸 / 比例</div>
+        <div class="stage">按打印方式拆件，预留卡榫和孔位</div>
+        <div class="stage">导出 STL / 3MF / OBJ</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">切片与打印后处理</div>
+        <div class="stage">切片软件：Bambu / Orca / Cura / CHITUBOX / Lychee</div>
+        <div class="stage">设置层高 / 填充 / 支撑 / 朝向 / 壁厚 / 曝光</div>
+        <div class="stage">生成 G-code 或树脂打印文件</div>
+        <div class="stage">打印测试</div>
+        <div class="stage">去支撑 / 清洗 / 固化 / 打磨 / 喷漆 / 装配</div>
+        <div class="stage">交付 STL、打印成品、分件或可复卖模型包</div>
+      </div>
+    </div>
+    <p class="pipeline-note">传统流程里模型检查、拆件和切片参数占用大量时间；Tripo 的切入位置见下方“流程管线 × 产品卖点对应”。</p>
+  </div>
+          <div class="pipeline-map">
+    <h3>流程管线 × 产品卖点对应</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">手办 / 微缩打印管线</div>
+        <div class="stage">图片上传 / 文字输入</div>
+        <div class="stage">HD 模型生成</div>
+        <div class="stage">白模 / 纹理 ON/OFF</div>
+        <div class="stage">部件拆分</div>
+        <div class="stage">STL / 3MF / Bambu</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">对应卖点功能</div>
+        <div class="selling-point"><strong>图片 / 文本生成模型</strong>照片、草图或文字快速生成 3D 输入</div>
+        <div class="selling-point"><strong>H3.1 高精度模型生成</strong>最高约 200 万面，保留雕刻与曲面细节</div>
+        <div class="selling-point"><strong>导出白模</strong>关闭纹理导出白模，专注 STL 几何与轮廓检查</div>
+        <div class="selling-point"><strong>部件拆分</strong>低 / 中 / 高档位拆成可编辑部件，便于分体打印</div>
+        <div class="selling-point"><strong>导出与直连</strong>STL / OBJ / 3MF，或发送到 Bambu Studio</div>
+
+      </div>
+    </div>
+  </div>
+  <div class="feature-grid feature-grid-single">
+    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li>智能网格（Smart Mesh）：低面数容易让实体表面粗糙、有棱角</li><li>重拓扑：3D 打印优先保留高精度几何，重拓扑可能破坏原始细节</li><li>绑骨与动画：打印静物不需要骨骼绑定或动作</li></ul></div>
+  </div>
+  <div class="region"><strong>地区情况</strong><p>英国是 Warhammer 发源地，战棋涂装氛围浓厚；美国、加拿大和英国适合从 DIY 走向 Etsy 小店变现；法国在 Cults / FabLab 和设计感模型上信号强；德国功能件和可打印 STL 文件交易销量高；巴西 / 西语市场适合开箱和社群投放。</p></div>
+      <figure class="industry-visual"><img src="image/1.png" alt="3D 打印行业配图"><figcaption>3D 打印行业跑团TRPG模型</figcaption></figure>
+</section>
+
+<section class="card section" id="game">
+  <div class="section-head"><div><span class="section-no">02 / GAME</span><h2>游戏</h2></div><p>核心是“Smart Mesh 智能网格 P2.0 低模直出 / 重拓扑减面 / 可导入引擎”。最终交付：FBX 或引擎资源。</p></div>
+  <div class="lane-grid print-intro-grid">
+    <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>独立游戏开发者、小型美术团队、UGC 资产作者、Roblox / Fortnite / UEFN 地图作者、MOD 作者、外包资产团队、游戏原型团队、学生和 Game Jam 团队。</p>
+      <p><b>做什么：</b>小团队负责把角色、怪物、武器、载具、建筑、环境件、关卡填充物做成可进 Unity / UE 的资产；外包团队负责批量产出风格统一的道具包；UGC 作者负责做 avatar、皮肤、地图装饰和可售卖模板。</p>
+      <p><b>应用场景：</b></p><ul><li>原型阶段：快速生成 pitch demo、试玩关卡、trailer 里的临时资产。</li><li>量产阶段：生成武器、宝箱、路障、路灯、家具、建筑立面、植被、怪物变体等中低重要度资产。</li><li>角色阶段：用多视图或 T-pose 生成主角 / NPC 基础模型，再做重拓扑、绑骨和动画。</li><li>UGC / MOD：给创作者提供可直接上传或二次编辑的头像、皮肤、地图组件和装饰件。</li><li>资产商店：制作低模包、风格化道具包、场景包、怪物包和主题化模板。</li></ul><p><b>产业背景：</b>游戏产业已经从“大作自研美术”扩展到“自制 + 外包 + 资产商店 + UGC 创作”混合模式；Unity Asset Store、Fab / Unreal 生态和大量独立开发工具链，把“买资产、拼资产、改资产”变成常态。</p><p><b>痛点需求：</b>实时游戏资产不能把几十万到 200 万面的高模直接绑定或进引擎；普通道具优先采用 Smart Mesh 智能网格 P2.0 的原生四边面或三角面低模直出，重要资产再做减面 / 重拓扑，并进入绑定、动画、LOD、碰撞体和引擎测试流程。P2.0 支持三角面最高 50K、原生四边面最高 25K，在可控面数下输出规整 edge loop，便于后续 LOD 与游戏生产。</p></div>
+
+    <div class="lane"><h3>消费端</h3><p><b>用户画像：</b>独立游戏主创、发行 / 运营团队、关卡设计师、技术美术、虚拟世界搭建者、UGC 买家、MOD 玩家、VRChat / avatar 创作者、教育用户和普通玩家。</p><p><b>应用场景：</b></p>
+      <ul><li>直播 / 社媒：创作者用游戏角色和场景做短视频、封面、虚拟直播背景。</li>
+      <li>虚拟世界：买房间组件、互动道具、舞台和社交空间素材，做 Roblox / VRChat / 元宇宙房间。</li>
+      <li>UGC / MOD：给创作者提供可直接上传或二次编辑的头像、皮肤、地图组件和装饰件。</li>
+    </ul><p><b>代表平台：</b><b>Unity Asset Store</b> 更适合 Unity 原生项目、移动游戏、独立开发和快速原型；<b>Fab / Unreal 生态</b> 更适合 Unreal、3A 外包、影视化实时内容和高保真场景；<b>Sketchfab / Web 预览链路</b> 更适合浏览器看样、资产评审、教育和营销展示；<b>CGTrader / TurboSquid</b> 更适合跨软件买卖、外包补件和非引擎优先的模型采购。</p><p><b>消费市场背景：</b>资产消费正在从专业游戏公司扩展到独立开发者、UGC 创作者、虚拟社交用户和教育用户</p><p><b>需求原因</b>普通玩家购买模型资产更多是出于兴趣或者学习目的。</p></div>
+  </div>
+  <div class="pipeline-map traditional-pipeline">
+    <h3>传统三维管线</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">建模与贴图</div>
+        <div class="stage">概念图 / 设定图 / moodboard</div>
+        <div class="stage">blockout 粗模，确认比例和玩法尺寸</div>
+        <div class="stage">高模雕刻 / 硬表面建模</div>
+        <div class="stage">低模重拓扑</div>
+        <div class="stage">UV 展开</div>
+        <div class="stage">烘焙 Normal / AO / Curvature</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">资产规范与绑定</div>
+        <div class="stage">PBR 材质：BaseColor / Roughness / Metallic / Normal / AO</div>
+        <div class="stage">LOD 制作</div>
+        <div class="stage">碰撞体制作</div>
+        <div class="stage">角色：骨骼绑定 / 蒙皮 / 动作 / blendshape</div>
+        <div class="stage">导出 FBX / glTF / GLB / OBJ</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">引擎与验收</div>
+        <div class="stage">导入 Unity / Unreal / Godot</div>
+        <div class="stage">检查比例 / 材质 / 骨骼 / 动画 / 碰撞 / LOD / 压缩</div>
+        <div class="stage">引擎内 prefab / blueprint / material instance</div>
+        <div class="stage">真机或目标平台性能测试</div>
+        <div class="stage">交付 game-ready asset、角色包、场景包、道具包、动画包</div>
+      </div>
+    </div>
+    <div class="pipeline-branches">
+      <div class="branch"><strong>普通道具</strong>概念图 → 低模建模 → UV → 贴图 → FBX → 引擎。</div>
+      <div class="branch"><strong>重要角色</strong>概念图 → 高模雕刻 → 重拓扑 → UV → 烘焙 → 材质 → 绑定 → 动画 → FBX。</div>
+      <div class="branch"><strong>移动游戏</strong>更重视低面数、贴图压缩、渲染批次和 LOD。</div>
+      <div class="branch"><strong>UE / PC / 主机</strong>可以更高精，但仍要做拓扑、LOD 和材质规范。</div>
+      <div class="branch"><strong>UGC / avatar</strong>更重视骨骼规范、可换装、平台上传限制和授权安全。</div>
+    </div>
+  </div>
+  <div class="pipeline-map">
+    <h3>流程管线 × 产品卖点对应</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">普通道具 / 场景管线</div>
+        <div class="stage">图片生成 / 上传</div>
+        <div class="stage">Smart Mesh 智能网格 P2.0</div>
+        <div class="stage">原生四边面 500–25K</div>
+        <div class="stage">生成纹理</div>
+        <div class="stage">导出 / 发送到 DCC</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">对应卖点</div>
+        <div class="selling-point"><strong>Smart Mesh 智能网格 P2.0</strong>原生四边面 / 三角面低模直出，适合普通道具、场景资产与批量铺量</div>
+        <div class="selling-point"><strong>面数与拓扑</strong>三角面最高 50K；原生四边面最高 25K，edge loop 规整，适配实时加载与后续 LOD</div>
+        <div class="selling-point"><strong>多生成与局部编辑</strong>同一输入一次最多生成 4 个变体；局部编辑只重试一个部位，不影响其他部分</div>
+        <div class="selling-point"><strong>纹理生成</strong>基于文字、参考图或多视图生成纹理</div>
+        <div class="selling-point"><strong>DCC 桥接到 UE &amp; Unity</strong>导出后桥接到 UE &amp; Unity，并可在专业内容制作工具中继续处理</div>
+      </div>
+    </div>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">角色 / 可动画资产管线</div>
+        <div class="stage">T-pose 参考图</div>
+        <div class="stage">Smart Mesh 智能网格 P2.0</div>
+        <div class="stage">原生四边面 500–25K</div>
+        <div class="stage">绑骨与动作库</div>
+        <div class="stage">FBX 导出</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">对应卖点</div>
+        <div class="selling-point"><strong>文字/多视图/多图生成模型</strong>可以勾选T-pose更好约束生成效果</div>
+        <div class="selling-point"><strong>Smart Mesh 智能网格 P2.0</strong>角色资产可按实时资产思路生成原生四边面低模，便于后续制作</div>
+        <div class="selling-point"><strong>对称性 / 比例 / 局部编辑</strong>控制角色一致性；只重试局部，不影响整体生成结果</div>
+        <div class="selling-point"><strong>绑骨与动画</strong>目前支持 T-pose 人类和标准站立姿势四足动物</div>
+        <div class="selling-point"><strong>FBX 导出</strong>已绑骨和添加动作时可选择导出骨骼和动画</div>
+      </div>
+    </div>
+  </div>
+  <div class="feature-grid feature-grid-single">
+    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li> H3.1 高精度模型：最高约 200 万面，不能直接作为实时游戏引擎交付资产</li><li>高面数模型直接绑定：绑定和动画前应先减面 / 重拓扑，避免性能和拓扑问题</li><li>全资产 8K 贴图：只适合核心资产静态展示，泛用会增加包体和显存压力</li><li>STL / 3MF：不支持导出骨骼和动画，不适合作为游戏动画交付格式</li></ul></div>
+  </div>
+  <div class="region"><strong>地区情况</strong><p>北美和欧洲更适合中高预算独立游戏、虚幻引擎、虚拟制作和外包采购；日本更偏角色、怪物、二次元、移动游戏和轻量素材；韩国更偏角色、美术效率、网游运营和虚拟社交；东南亚和拉美更常见低成本原型、手游、UGC 和素材拼装型团队。</p></div>
+      <figure class="industry-visual"><img src="image/2.png" alt="游戏行业配图"><figcaption>游戏场景白膜</figcaption></figure>
+</section>
+
+<section class="card section" id="interior">
+  <div class="section-head"><div><span class="section-no">03 / INTERIOR</span><h2>室内设计</h2></div><p>核心是“高精度家具、PBR 材质、灯光相机预览”。最终交付：效果图、漫游或空间展示资产。</p></div>
+  <div class="lane-grid print-intro-grid">
+    <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>室内设计师、软装设计师、家具品牌、电商家居卖家、建筑可视化团队、家装公司、地产样板间团队、民宿 / 酒店空间运营者。</p><p><b>做什么：</b>设计师用 3D 家具和软装资产做提案；家具品牌把 SKU 做成 3D / AR 展示；家装公司用空间模型讲方案；电商卖家把沙发、椅子、灯具、柜体、地毯、摆件做成可配置视觉资产。</p><p><b>应用场景：</b></p><ul><li>家具：沙发、椅子、床、柜体、餐桌、灯具、卫浴和厨房小件。</li><li>软装：摆件、墙饰、植物、地毯、窗帘、挂画、桌面装饰。</li><li>空间：样板间、民宿、酒店、办公室、咖啡店、展厅和商业空间。</li><li>电商：同一家具的颜色、材质、尺寸和场景搭配图批量生成。</li><li>AR / 漫游：把家具资产导出到 Web、AR 试摆或实时漫游场景。</li></ul><p><b>产业背景：</b>家居零售和装修决策高度依赖视觉化，IKEA、Wayfair 等家居场景已经教育用户用 AR / 3D 先看摆放效果；设计端也在从静态效果图走向实时漫游和可交互方案。</p><p><b>痛点需求：</b>需要保证家具曲面、布料褶皱、木纹、金属、玻璃、皮革反射和空间比例自然可信；如果模型比例不准、材质不真实、透视不自然，会直接影响客户信任和成交。需要更快出提案、更低成本做 SKU 视觉资产、更少依赖摄影棚和实物打样，并让客户在签单前理解风格、尺寸和材质。</p></div>
+    <div class="lane"><h3>消费端</h3><p><b>用户画像：</b>房主、装修客户、租房改造用户、房产客户、家居买家、民宿房东、办公室采购、设计感内容消费者。</p><p><b> 为什么买：</b>消费者买的是“决策确定性”：确认沙发放不放得下、颜色会不会冲突、风格是否统一、预算花出去之后是否后悔。</p><p><b>应用场景：</b></p><ul><li>装修前效果预览：客厅、卧室、厨房、儿童房和小户型改造。</li><li>家具购买：看尺寸、材质、颜色、摆放距离和与旧家具是否搭配。</li><li>样板间 / 民宿：比较不同风格，决定软装投入和拍照传播效果。</li><li>远程沟通：业主、设计师、施工方异地同步方案。</li><li>社媒内容：Instagram、Pinterest 风格图和改造前后对比。</li></ul><p><b>消费市场背景：</b>线上家居购买增长后，用户无法触摸和试摆，退换货成本高；3D 预览和 AR 试摆变成降低犹豫、提升转化和减少售后争议的关键工具。</p><p><b>需求原因：</b>提前看见效果，降低装修和购买决策风险；最怕图好看但实际尺寸、色差、材质和空间压迫感不符合预期。</p></div>
+  </div>
+  <div class="pipeline-map traditional-pipeline">
+    <h3>传统三维管线</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">空间与资产搭建</div>
+        <div class="stage">平面图 / CAD / 手绘草图 / 现场照片</div>
+        <div class="stage">建空间基础模型：墙体 / 地面 / 天花 / 门窗 / 层高</div>
+        <div class="stage">导入或建模家具、灯具、软装、植物、摆件</div>
+        <div class="stage">设置真实尺寸和比例</div>
+        <div class="stage">材质赋予：木材 / 布料 / 皮革 / 金属 / 玻璃 / 石材 / 墙漆</div>
+        <div class="stage">灯光布置：自然光 / 筒灯 / 射灯 / 氛围灯 / HDRI</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">渲染与交付</div>
+        <div class="stage">相机机位：客厅 / 卧室 / 餐厨 / 走廊 / 局部特写</div>
+        <div class="stage">白模 / clay render 测试</div>
+        <div class="stage">调整材质、灯光、构图</div>
+        <div class="stage">输出效果图 / 全景图 / 漫游动画</div>
+        <div class="stage">实时展示：减面 / 贴图压缩 / 合并材质 / 导出 GLB、FBX</div>
+        <div class="stage">导入 Enscape / Twinmotion / Unreal / Web 3D / VR，客户审稿定稿</div>
+      </div>
+    </div>
+    <div class="pipeline-branches">
+      <div class="branch"><strong>常见交付</strong>静态效果图、360 全景图、3D floor plan。</div>
+      <div class="branch"><strong>常见交付</strong>室内漫游视频、Web / VR 实时空间、家具 SKU 3D 展示资产。</div>
+    </div>
+  </div>
+  <div class="pipeline-map">
+    <h3>流程管线 × 产品卖点对应</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">家具软装管线</div>
+        <div class="stage">图片 / 文本输入</div>
+        <div class="stage">HD Model</div>
+        <div class="stage">纹理设置</div>
+        <div class="stage">HDRI / 预览</div>
+        <div class="stage">导出到 DCC</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">对应卖点</div>
+        <div class="selling-point"><strong>HD Model</strong>用于高细节需求场景，呈现家具曲面和褶皱</div>
+        <div class="selling-point"><strong>PBR / 纹理质量</strong>控制纹理质量、类型以及是否生成 PBR</div>
+        <div class="selling-point"><strong>纹理编辑 / 升级纹理</strong>提升材质清晰度、细节度和整体质感</div>
+        <div class="selling-point"><strong>HDRI / 显示模式</strong>观察不同环境光和材质表现</div>
+        <div class="selling-point"><strong>DCC 桥接到 Blender / 3ds Max / SketchUp</strong>导出后进入家居建模、材质、灯光与效果图流程；实时交付则另走 GLB / Web / AR 预览</div>
+      </div>
+    </div>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">实时展示管线</div>
+        <div class="stage">家具参考图</div>
+        <div class="stage">Smart Mesh 智能网格 P2.0</div>
+        <div class="stage">生成纹理</div>
+        <div class="stage">GLB 导出</div>
+        <div class="stage">Web / 实时展示</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">对应卖点</div>
+        <div class="selling-point"><strong>Smart Mesh 智能网格 P2.0</strong>原生四边面 / 三角面，适合实时展示中需要快速加载的家具和软装资产</div>
+        <div class="selling-point"><strong>面数与拓扑设置</strong>三角面最高 50K、原生四边面最高 25K，可按展示预算控制规模</div>
+        <div class="selling-point"><strong>纹理分辨率</strong>导出时按展示需求选择贴图清晰度</div>
+        <div class="selling-point"><strong>GLB 导出</strong>适合 Web / 实时展示场景</div>
+        <div class="selling-point"><strong>完整流程</strong>模型生成、纹理、导出可灵活组合</div>
+      </div>
+    </div>
+  </div>
+  <div class="feature-grid feature-grid-single">
+    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li>智能网格（Smart Mesh）：低面数可能无法充分呈现家具曲面与细节</li><li>绑骨与动画：家具和室内模型通常为静态展示，不需要骨骼绑定和动画</li></ul></div>
+  </div>
+  <div class="region"><strong>地区情况</strong><p>英国法国适合高端独立站和自由职业设计师；韩国适合现代家居和快速提案；巴西适合家装改造和社媒展示；德国做实时漫游时要强调轻量和格式稳定。</p></div>
+      <figure class="industry-visual"><img src="image/3.png" alt="室内设计行业配图"><figcaption>室内白膜渲染</figcaption></figure>
+</section>
+
+<section class="card section" id="film">
+  <div class="section-head"><div><span class="section-no">04 / FILM & ANIMATION</span><h2>影视动画</h2></div><p>核心是“高保真细节、多视图、受限范围绑骨动画、USD / FBX”。最终交付：镜头级资产或动画素材。</p></div>
+  <div class="lane-grid print-intro-grid">
+    <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>VFX 团队、动画工作室、广告制作公司、短视频团队、虚拟人团队、虚拟制片团队、概念设计师、导演组预演团队、品牌内容工作室。</p>
+      <p><b>做什么：</b>影视团队做怪物、道具、场景、角色替身和镜头预演资产；动画团队做风格化角色和环境；广告公司做产品广告里的夸张道具、虚拟场景和社媒短片；虚拟人团队做 avatar、服饰、舞台和表演道具。</p>
+      <p><b>应用场景：</b></p><ul><li>前期开发：概念图转 3D，用于导演沟通、分镜、预演和 pitch。</li><li>VFX 制作：怪物、飞船、武器、雕像、场景碎片、背景建筑和镜头道具。</li><li>动画短片：风格化角色、宠物、表情道具、场景资产和循环动作。</li><li>广告 / MV：品牌产品放大展示、超现实场景、舞台装置和动态海报。</li><li>虚拟人 / VTuber：角色配饰、直播场景、节日皮肤、粉丝礼物和活动素材。</li></ul><p><b>产业背景：</b>虚拟制片、实时渲染和短视频广告让影视资产需求从“大项目少量高精”变成“多项目、高频、快速迭代”；小团队也开始用 UE、Blender、C4D 和 AI 工具完成接近工作室级的视觉内容。</p><p><b>痛点需求：</b>模型要服务绑定、动画、灯光、渲染和合成；写实镜头需要高精度细节和 PBR 材质，可动画资产仍需关注拓扑、骨骼适配、表情空间、贴图清晰度和版权安全。目的是降低概念验证成本、加快资产试错、让导演和客户更早看到可旋转的 3D 形态，并把模型顺利交给绑定、动画、灯光、渲染和合成团队。</p></div>
+    <div class="lane"><h3>消费端</h3><p><b>用户画像：</b>广告主、品牌方、动画观众、虚拟主播粉丝、游戏和动漫粉丝、短视频用户、活动观众、IP 衍生品买家。</p><p><b>为什么买：</b>品牌方买的是传播效率和视觉记忆点；粉丝买的是角色陪伴、身份认同和收藏价值；内容团队买的是更短周期内形成“看起来完成度高”的画面。</p><p><b>应用场景：</b></p><ul><li>角色短片：原创角色、宠物、怪物、吉祥物和剧情道具。</li><li>虚拟偶像 / VTuber：直播间背景、服饰配件、舞台、节日皮肤和粉丝互动礼物。</li><li>广告片：产品拟人化、包装变形、超现实空间和 3D 动态海报。</li><li>社媒传播：TikTok / YouTube Shorts / B站 / 小红书里的循环动画、封面和互动素材。</li><li>IP 衍生：把角色资产延展为头像、贴纸、周边概念、AR 滤镜或 3D 打印摆件。</li></ul><p><b>消费市场背景：</b>短视频广告、虚拟主播和粉丝经济把 3D 角色资产的消费门槛降低，视觉内容越来越追求高频更新和可复用角色，而不是只在院线级项目里使用。</p><p><b>需求原因：</b>买的是角色记忆点、画面完成度和传播效果；对画面完成度敏感，最怕角色不稳定、模型不能动、贴图粗糙、风格不统一或侵权风险影响上线。愿意为喜欢的角色和 IP 付费、习惯通过短视频和直播接触 3D 内容；年轻用户更接受虚拟偶像、虚拟宠物和数字周边。</p></div>
+  </div>
+  <div class="pipeline-map traditional-pipeline">
+    <h3>传统三维管线</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">前期与资产制作</div>
+        <div class="stage">剧本 / 分镜 / 概念设定</div>
+        <div class="stage">角色、场景、道具设计</div>
+        <div class="stage">layout / previs，确定镜头、节奏、走位</div>
+        <div class="stage">资产建模：角色 / 道具 / 场景 / 环境</div>
+        <div class="stage">高模雕刻 / 细节制作</div>
+        <div class="stage">重拓扑（需动画或变形时）+ UV 展开</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">绑定、动画与特效</div>
+        <div class="stage">材质 / shading / lookdev</div>
+        <div class="stage">角色绑定、表情绑定、毛发 / 布料 / 肌肉系统</div>
+        <div class="stage">动画制作</div>
+        <div class="stage">特效模拟：烟 / 火 / 水 / 破碎 / 粒子 / 布料 / 毛发</div>
+        <div class="stage">灯光</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">渲染与后期</div>
+        <div class="stage">渲染</div>
+        <div class="stage">合成：绿幕 / 实拍匹配 / 调色 / 景深 / 运动模糊</div>
+        <div class="stage">剪辑 / 声音 / 最终输出</div>
+      </div>
+    </div>
+    <div class="pipeline-branches">
+      <div class="branch"><strong>虚拟制片分支</strong>概念资产 → 实时引擎版本 → 减面 / LOD / 实时材质 → 导入 Unreal。</div>
+      <div class="branch"><strong>虚拟制片分支</strong>previs / techvis / virtual scouting → LED volume 或实时拍摄 → 后期合成 / 调色。</div>
+    </div>
+  </div>
+  <div class="pipeline-map">
+    <h3>流程管线 × 产品卖点对应</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">高保真镜头资产管线</div>
+        <div class="stage">设定图 / 多视图</div>
+        <div class="stage">HD Model</div>
+        <div class="stage">纹理 / PBR</div>
+        <div class="stage">DCC 桥接</div>
+        <div class="stage">USD / FBX</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">对应卖点</div>
+        <div class="selling-point"><strong>多视图生成模型</strong>上传前、左、后、右视图，提升结构准确和细节表现</div>
+        <div class="selling-point"><strong>H3.1</strong>最高约 200 万面，用于高保真细节和影视级静态渲染</div>
+        <div class="selling-point"><strong>纹理 / PBR</strong>支持文本、图片、多视图生成纹理和真实光照逻辑材质</div>
+        <div class="selling-point"><strong>DCC 桥接到 Blender / Maya / 3ds Max</strong>导出后进入绑定、动画、LookDev、镜头渲染与合成流程；虚拟制片项目再按需进入实时制作流程</div>
+        <div class="selling-point"><strong>USD / FBX</strong>进入影视特效、动画和协同工作流</div>
+      </div>
+    </div>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">角色绑定动画管线</div>
+        <div class="stage">T-pose 人类 / 标准四足</div>
+        <div class="stage">模型生成</div>
+        <div class="stage">绑骨</div>
+        <div class="stage">动作库</div>
+        <div class="stage">FBX 导出</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">对应卖点</div>
+        <div class="selling-point"><strong>文字/多视图/多图生成模型</strong>可以勾选T-pose更好约束生成效果</div>
+        <div class="selling-point"><strong>Smart Mesh 智能网格 P2.0</strong>生成规整四边面基础网格，便于后续绑定与动画</div>
+        <div class="selling-point"><strong>骨骼显示</strong>可打开骨骼开关查看绑定骨骼形态</div>
+        <div class="selling-point"><strong>动作库</strong>模型绑定后可选择动作并预览</div>
+        <div class="selling-point"><strong>导出骨骼和动画</strong>FBX 可按软件选择适合 Blender、Mixamo、3dsmax 的格式</div>
+      </div>
+    </div>
+  </div>
+  <div class="feature-grid feature-grid-single">
+    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li>智能网格（Smart Mesh）：低面数无法满足高保真细节和影视级渲染</li><li>非 T-pose 人类 / 非标准站立四足模型绑骨：不在当前绑骨适用范围内</li><li>STL / 3MF：不支持导出骨骼和动画，不适合作为影视动画交付格式</li></ul></div>
+  </div>
+  <div class="region"><strong>地区情况</strong><p>日本适合二次元、怪物、三渲二和 VTuber；韩国适合高完成度角色短片和团队提效；法国偏作者感和艺术动画；北美适合独立短片和游戏宣传。</p></div>
+      <figure class="industry-visual"><img src="image/4.png" alt="影视动画行业配图"><figcaption>控制网格服务变形，渲染阶段再细分</figcaption></figure>
+</section>
+
+<section class="card section" id="fashion">
+  <div class="section-head"><div><span class="section-no">05 / FASHION DESIGN</span><h2>时尚设计</h2></div><p>核心是“参考图、高清模型、PBR 纹理、导出展示”。最终交付：配饰概念、视觉展示或电商资产。</p></div>
+  <div class="lane-grid print-intro-grid">
+    <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>服装设计师、鞋包配饰设计师、数字时尚创作者、潮牌团队、电商视觉团队、游戏皮肤团队、虚拟偶像团队、买手店和品牌营销团队。</p><p><b>应用场景：</b></p><ul><li>服装概念：廓形、领口、袖型、褶皱、装饰结构和系列主题。</li><li>配饰产品：鞋、包、首饰、眼镜、帽子、腰带、手表和香水瓶。</li><li>数字时尚：avatar 服饰、虚拟试穿、游戏皮肤、虚拟秀场和虚拟偶像造型。</li><li>营销内容：新品发布、社媒海报、橱窗视觉、短视频转场和 3D Lookbook。</li><li>电商资产：同一款式的颜色、材质、金属件、纹理和搭配组合快速生成。</li></ul><p><b>产业背景：</b>时尚行业正在把 3D 打样、虚拟试穿和数字营销前置到设计链路；快反品牌和潮牌需要更快测试风格，数字时尚和游戏皮肤则让“服饰资产”从实体商品扩展为虚拟身份商品。</p><p><b>痛点需求：</b>需要快速把 moodboard / 参考图变成 3D 概念，并保留轮廓、纹理、金属、皮革、织物和材质表达；服装本体若要真实穿着仿真仍需要 CLO / Marvelous 等专业布料流程，Tripo 更适合概念、配饰和展示资产。使用目的是降低样衣和拍摄成本、缩短从 moodboard 到可展示 3D 概念的周期、支持跨部门评审，并把 3D 资产复用于广告、电商、游戏和虚拟社交。</p></div>
+    <div class="lane"><h3>消费端</h3><p><b>用户画像：</b>时尚消费者、潮流玩家、虚拟形象用户、游戏皮肤买家、社媒内容消费者、粉丝、礼品买家和品牌会员。</p><p><b>为什么买：</b>消费者买的是审美表达、身份标签、稀缺感和社交展示；品牌方买的是新品热度、预售转化和更低成本的视觉传播素材。</p><p><b>应用场景：</b></p><ul><li>配饰预览：鞋、包、首饰、眼镜和帽子的多角度查看。</li><li>虚拟穿搭：avatar 换装、社交头像、虚拟直播造型和游戏角色皮肤。</li><li>新品发布：数字 Lookbook、3D 海报、AR 滤镜、直播间展示和橱窗屏幕。</li><li>定制消费：刻字首饰、限定鞋配色、包挂、徽章和粉丝周边。</li><li>社媒传播：用户用 3D 穿搭和虚拟配饰做短视频、封面和个人风格表达。</li></ul><p><b>消费市场背景：</b>线上时尚消费越来越依赖视觉内容，游戏、虚拟偶像和社交平台把服饰的价值从保暖 / 使用扩展到身份表达；虚拟试穿和 3D 预览能降低犹豫，但仍要解决材质可信和尺码预期。</p><p><b>需求原因：</b>买的是审美表达、身份标签和新鲜感；最怕 3D 图与实物质感不一致、试穿效果不可信、风格不够独特或版权 / 品牌元素不安全。</p></div>
+  </div>
+  <div class="pipeline-map traditional-pipeline">
+    <h3>传统三维管线</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">版型与 3D 试衣</div>
+        <div class="stage">趋势研究 / moodboard / 款式草图</div>
+        <div class="stage">2D 版型 / pattern</div>
+        <div class="stage">导入 CLO / Browzwear / Style3D</div>
+        <div class="stage">设置 avatar、尺码、姿态</div>
+        <div class="stage">设置面料物理：重量 / 弹性 / 厚度 / 垂坠</div>
+        <div class="stage">虚拟缝合和 3D 试衣</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">出图与量产</div>
+        <div class="stage">调整版型、松量、褶皱、长度、结构线</div>
+        <div class="stage">辅料：拉链 / 纽扣 / 金属件 / 印花 / 刺绣 / 吊牌</div>
+        <div class="stage">材质和颜色方案</div>
+        <div class="stage">渲染 Lookbook / 走秀 / 电商图</div>
+        <div class="stage">输出 tech pack、版型文件、BOM、颜色和尺码</div>
+        <div class="stage">打样 / 工厂沟通 → 实物样衣验证 → 修版量产</div>
+      </div>
+    </div>
+    <div class="pipeline-branches">
+      <div class="branch"><strong>数字时尚 / 游戏服饰</strong>CLO / Marvelous 高精服装模拟 → 导出 OBJ / FBX → 清理网格 → 重拓扑。</div>
+      <div class="branch"><strong>数字时尚 / 游戏服饰</strong>UV / 烘焙 → PBR 材质 → 绑定到 avatar 骨骼 → 导入 Unity / Unreal / Roblox / VRChat → 平台测试上架。</div>
+    </div>
+  </div>
+  <div class="pipeline-map">
+    <h3>流程管线 × 产品卖点对应</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">配饰概念管线</div>
+        <div class="stage">moodboard / 参考图</div>
+        <div class="stage">图片生成 3D</div>
+        <div class="stage">HD Model</div>
+        <div class="stage">PBR / 纹理编辑</div>
+        <div class="stage">OBJ / FBX / GLB</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">对应卖点</div>
+        <div class="selling-point"><strong>专业级 AI 生图</strong>生成适合 3D 创作的参考图、概念图或 3D 输入内容</div>
+        <div class="selling-point"><strong>图片生成模型</strong>将图片或草图转换为 3D 模型</div>
+        <div class="selling-point"><strong>HD Model</strong>用于保留鞋包首饰轮廓、曲面和装饰细节</div>
+        <div class="selling-point"><strong>纹理编辑 / PBR</strong>支持绘制、生成、升级纹理和真实光照逻辑材质</div>
+        <div class="selling-point"><strong>导出格式</strong>OBJ / FBX / GLB 用于展示和后续制作</div>
+      </div>
+    </div>
+    
+  </div>
+  <div class="feature-grid feature-grid-single">
+    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li>非角色类的鞋包配饰使用绑骨与动画：当前绑骨主要适用于 T-pose 人类和标准站立四足动物</li><li>STL / 3MF 导出：不支持骨骼和动画，不适合虚拟穿搭动画交付</li><li>智能网格低面数：高端鞋包、首饰和布料褶皱展示可能损失细节</li></ul></div>
+  </div>
+  <div class="region"><strong>地区情况</strong><p>西班牙适合数字时尚、配饰和艺术装置；韩国适合潮流视觉和快速上新；日本适合二次元服饰和虚拟偶像；北美适合 DTC 品牌和社媒广告。</p></div>
+      <figure class="industry-visual"><img src="image/5.png" alt="时尚设计行业配图"><figcaption>C4D流程渲染服装效果</figcaption></figure>
+</section>
+
+<section class="card section" id="commerce">
+  <div class="section-head"><div><span class="section-no">06 / PRODUCT COMMERCE</span><h2>产品电商</h2></div><p>核心是“商品可信展示、高清 PBR、轻量 Web 预览”。最终交付：渲染图 / GLB / USDZ。</p></div>
+  <div class="lane-grid print-intro-grid">
+    <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>独立站卖家、电商品牌、广告代理、产品摄影和渲染团队、家居 / 美妆 / 3C 品牌、Shopify / Amazon 卖家、跨境电商团队、包装设计公司。</p><p><b> 做什么：</b>品牌方把商品做成 3D 主图、详情页素材、360 度展示、颜色变体和 AR 预览；代理公司做广告短视频和社媒素材；跨境卖家把新品在实物拍摄前先做视觉测试；包装团队做瓶罐盒袋的材质和结构展示。</p><p><b>应用场景：</b></p><ul><li>商品主图：家居、鞋包、首饰、美妆、3C、玩具、礼品和小家电。</li><li>详情页：拆解结构、材质特写、尺寸对比、卖点动画和使用场景。</li><li>变体展示：颜色、材质、花纹、套装、配件和限定款批量生成。</li><li>Web 3D / AR：网页 360 度查看、手机 AR 试摆、试戴 / 试放和互动配置器。</li><li>广告内容：短视频、产品爆炸图、包装转场、众筹页和新品预售页面。</li></ul><p><b>产业背景：</b>电商竞争从“有图”升级到“可交互、可试摆、可配置”；Shopify、Apple Quick Look、Google model-viewer 等生态让 GLB / USDZ 商品资产更容易进入网页和移动端。</p><p><b>痛点需求：</b>需要同时满足高质量商品展示和手机端轻量化实时加载：近景要有清晰纹理和 PBR，网页端要控制面数和贴图大小，格式要兼容 GLB / USDZ / FBX，且不能夸大实物效果。目的是降低摄影棚、样品寄送和重拍成本，提升电商转化，减少因尺寸 / 材质误解带来的退货，并让同一 3D 资产复用于主图、广告、AR 和配置器。</p></div>
+    <div class="lane"><h3>消费端</h3><p><b>用户画像：</b>线上购物用户、家居买家、鞋包配饰买家、美妆用户、礼品用户、众筹支持者、定制商品买家、对图片真实性敏感的高客单用户。</p><p><b>应用场景：</b></p><ul><li>家居摆放：沙发、灯具、柜子、桌椅、装饰画和园艺用品。</li><li>穿戴查看：鞋、包、眼镜、首饰、手表和帽子多角度检查。</li><li>美妆包装：口红、香水、护肤品瓶罐、礼盒包装和限定套装。</li><li>礼品定制：刻字、照片浮雕、宠物纪念、婚礼礼物和企业礼品。</li><li>众筹 / 预售：买家在没有现货时通过 3D 图理解产品结构和真实体积。</li></ul><p><b>消费市场背景：</b>线上购物无法触摸实物，退货、差评和客服问题常来自尺寸、色差、质感误解；3D / AR 商品展示能把“看图猜”变成“旋转看、放进家里看、按配置看”。</p><p><b>需求原因：</b>确认尺寸、材质、颜色和摆放效果，降低图片不可信带来的犹豫；最怕模型太假、加载太慢、颜色和实物不一致或 AR 尺寸不准。</p></div>
+  </div>
+  <div class="pipeline-map traditional-pipeline">
+    <h3>传统三维管线</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">建模与材质</div>
+        <div class="stage">产品 CAD / 实物样品 / 摄影参考 / 包装设计稿</div>
+        <div class="stage">CAD 数据清理或重新建模</div>
+        <div class="stage">去除内部结构，只保留可视外观</div>
+        <div class="stage">优化曲面、倒角、缝隙、Logo、标签、包装细节</div>
+        <div class="stage">UV 展开</div>
+        <div class="stage">PBR 材质：塑料 / 玻璃 / 金属 / 纸盒 / 织物 / 液体 / 皮革</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">出图与 Web / AR 交付</div>
+        <div class="stage">灯光和摄影棚场景设置</div>
+        <div class="stage">输出主图、详情页图、爆炸图、360 转台动画</div>
+        <div class="stage">做颜色 / 材质 / SKU 变体</div>
+        <div class="stage">Web 3D：减面 / 合并材质 / 压缩贴图 → 导出 GLB、USDZ</div>
+        <div class="stage">接入 Shopify / model-viewer / AR Quick Look / Scene Viewer</div>
+        <div class="stage">手机端加载、比例、材质和 AR 尺寸测试后交付</div>
+      </div>
+    </div>
+    <p class="pipeline-note">最终交付通常同时包含主图、视频、GLB、USDZ 和配置器资产。</p>
+  </div>
+  <div class="pipeline-map">
+    <h3>流程管线 × 产品卖点对应</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">商品渲染管线</div>
+        <div class="stage">商品图 / 参考图</div>
+        <div class="stage">HD Model</div>
+        <div class="stage">PBR 贴图</div>
+        <div class="stage">升级纹理</div>
+        <div class="stage">渲染图 / 模型导出</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">对应卖点</div>
+        <div class="selling-point"><strong>图片生成模型</strong>把商品参考图转换为可展示模型</div>
+        <div class="selling-point"><strong>HD Model</strong>用于静态商品展示和高质量细节</div>
+        <div class="selling-point"><strong>PBR / 纹理设置</strong>控制纹理质量、类型以及是否生成 PBR</div>
+        <div class="selling-point"><strong>升级纹理</strong>提升已有纹理清晰度、细节度和质感</div>
+        <div class="selling-point"><strong>导出格式</strong>USD / FBX / OBJ / STL / 3MF / GLB 按交付需求选择</div>
+      </div>
+    </div>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">Web / AR 预览管线</div>
+        <div class="stage">商品图</div>
+        <div class="stage">Smart Mesh 智能网格 P2.0</div>
+        <div class="stage">生成纹理</div>
+        <div class="stage">GLB / USDZ</div>
+        <div class="stage">网页 / 手机端加载</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">对应卖点</div>
+        <div class="selling-point"><strong>Smart Mesh 智能网格 P2.0</strong>用于快速生成、实时加载的商品预览 Web 页面</div>
+        <div class="selling-point"><strong>面数与拓扑设置</strong>原生四边面最高 25K、三角面最高 50K，适合 Web 应用和快速加载</div>
+        <div class="selling-point"><strong>GLB</strong>适用于 Web，内嵌纹理</div>
+        <div class="selling-point"><strong>USDZ</strong>适合 iOS AR Quick Look</div>
+        <div class="selling-point"><strong>纹理分辨率选择</strong>导出时按平台体积和清晰度选择</div>
+      </div>
+    </div>
+  </div>
+  <div class="feature-grid feature-grid-single">
+    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li>角色绑骨与动画：普通商品展示多为静态模型，只有角色或动物商品才需要</li><li>H3.1 高面数模型直接用于手机端实时 AR：加载性能压力大，应转轻量模型</li><li>STL / 3MF：用于 3D 打印交付，普通 Web 商品预览更常用 GLB / USDZ</li></ul></div>
+  </div>
+  <div class="region"><strong>地区情况</strong><p>美国适合 Shopify、独立站和 UGC 商品广告；英国适合高端独立站视觉服务；德国强调格式和加载速度；西班牙适合时尚配饰；土耳其适合低成本商品图。</p></div>
+      <figure class="industry-visual"><img src="image/6.png" alt="产品电商行业配图"><figcaption>电商效果渲染</figcaption></figure>
+</section>
+
+<section class="card section" id="industrial">
+  <div class="section-head"><div><span class="section-no">07 / INDUSTRIAL DESIGN</span><h2>工业设计</h2></div><p>核心是“高保真概念、重拓扑、网格化展示”。最终交付：渲染评审或跨平台展示资产。</p></div>
+  <div class="lane-grid print-intro-grid">
+    <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>工业设计师、产品经理、结构工程师、汽车 / 机械团队、消费电子团队、家具工厂、硬件创业团队、展会演示团队、售前技术团队。</p><p><b>做什么：</b>设计师做产品外观和系列概念；产品经理做评审用视觉样机；工程团队做非制造级展示模型、培训模型和部件说明；销售团队做展会、招投标和客户沟通用 3D 演示。</p><p><b>应用场景：</b></p><ul><li>消费电子：耳机、音箱、遥控器、按钮、接口、外壳和桌面配件。</li><li>汽车 / 出行：外观概念、内饰组件、轮毂、座椅、仪表、充电桩和展示模型。</li><li>机械设备：罩壳、控制面板、机械臂外观、传感器、工具头和培训演示件。</li><li>家具 / 家电：椅子、灯具、小家电、收纳件和系列化造型探索。</li><li>市场测试：同一产品多风格、多配色、多比例生成，用于内部评审和用户调研。</li></ul><p><b>产业背景：</b>制造业产品开发越来越强调快速迭代和数字样机，工业设计前端需要大量“看起来可信、能沟通方向”的 3D 概念；但真正投产仍依赖 CAD、工程约束、公差和材料工艺。</p><p><b>痛点需求：</b>更快从草图 / 参考图进入可旋转方案，减少物理样机次数，降低跨部门沟通成本，并把概念模型复用于渲染、展会、培训、售前和说明书。工业设计数据严谨性高，要服务造型、结构、装配、公差和制造；Tripo 更适合概念、渲染评审、网格化展示和营销培训，不适合直接替代 STEP / IGES / SolidWorks / Creo 的制造级 CAD 数据。</p></div>
+    <div class="lane"><h3>消费端</h3><p><b>用户画像：</b>品牌方、制造企业、采购团队、经销商、展会观众、培训学员、评审委员会、众筹支持者和企业客户。</p><p><b>应用场景：</b></p><ul><li>内部评审：设计、产品、工程、市场和老板快速比较方案。</li><li>客户提案：售前把设备、零部件或硬件产品讲清楚。</li><li>展会展示：大屏旋转模型、爆炸图、功能动线和产品系列墙。</li><li>培训说明：维修、安装、安全操作和部件识别。</li><li>众筹 / 预售：在模具和量产前展示外观、功能和尺寸感。</li></ul><p><b>消费市场背景：</b>硬件和设备销售越来越依赖数字化展示，尤其远程销售、国际展会和线上发布会需要在没有实物或不方便运输时讲清产品。</p><p><b>需求原因：</b>买的是概念验证、展示效率和沟通成本下降；最怕模型看起来像玩具、比例不可信、无法解释结构逻辑，或被误认为可以直接制造。</p></div>
+  </div>
+  <div class="pipeline-map traditional-pipeline">
+    <h3>传统三维管线</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">定义与 CAD 建模</div>
+        <div class="stage">用户需求 / 产品定义 / 竞品分析</div>
+        <div class="stage">草图 / 形态探索 / CMF 方向</div>
+        <div class="stage">CAD / CAID 建模：Rhino、Alias、Fusion、SolidWorks、Creo</div>
+        <div class="stage">曲面质量检查：连续性 / 倒角 / 分型线 / 装配关系</div>
+        <div class="stage">工程结构协同：内部空间 / 螺丝柱 / 卡扣 / 壁厚 / 散热 / 接口</div>
+        <div class="stage">渲染评审：KeyShot / V-Ray / Blender / Unreal</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">样机与量产准备</div>
+        <div class="stage">数字样机评审</div>
+        <div class="stage">3D 打印或 CNC 快速样机</div>
+        <div class="stage">人机工程 / 装配 / 使用测试</div>
+        <div class="stage">CAD 修改</div>
+        <div class="stage">工程图、BOM、模具评估</div>
+        <div class="stage">量产前样机 → 营销可视化资产输出</div>
+      </div>
+    </div>
+    <div class="pipeline-branches">
+      <div class="branch"><strong>展示 / 营销分支</strong>工程 CAD → 去除敏感内部结构 → 转换为 polygon mesh → 减面 / 清理法线 / 材质重建。</div>
+      <div class="branch"><strong>展示 / 营销分支</strong>输出 OBJ / FBX / GLB，用于展会、培训、官网、说明书和 AR 展示。</div>
+    </div>
+  </div>
+  <div class="pipeline-map">
+    <h3>流程管线 × 产品卖点对应</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">概念外观管线</div>
+        <div class="stage">草图 / 图片</div>
+        <div class="stage">HD Model</div>
+        <div class="stage">重拓扑</div>
+        <div class="stage">纹理 / 材质</div>
+        <div class="stage">OBJ / FBX / GLB</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">对应卖点</div>
+        <div class="selling-point"><strong>图片生成模型</strong>将草图或图片转为概念模型</div>
+        <div class="selling-point"><strong>HD Model</strong>用于高保真几何结构和外观细节</div>
+        <div class="selling-point"><strong>重拓扑</strong>将高面数模型整理为低面数、结构更规整的模型</div>
+        <div class="selling-point"><strong>纹理 / PBR</strong>补齐外观材质，提升评审可信度</div>
+        <div class="selling-point"><strong>导出格式</strong>OBJ / FBX / GLB 用于渲染评审或跨平台展示</div>
+      </div>
+    </div>
+  
+  </div>
+  <div class="feature-grid feature-grid-single">
+    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li>直接替代 STEP / IGES / CAD 母数据：产品介绍中的导出格式不包含 STEP / IGES，工程生产仍依赖 CAD / NURBS / 公差数据</li><li>绑骨与动画：工业产品多数用于外观、结构和展示评审，不是角色动画主流程</li><li>STL / 3MF：只在快速原型或打印验证时使用，不是工业设计评审的通用交付格式</li></ul></div>
+  </div>
+  <div class="region"><strong>地区情况</strong><p>德国最适合强调工程严谨、拓扑、格式和 XR 培训；加拿大适合空间计算和工业 XR；美国适合硬件创业和众筹视觉资产；土耳其适合教育和低价试用。</p></div>
+      <figure class="industry-visual"><img src="image/7.png" alt="工业设计行业配图"><figcaption>工业NURBS 流程</figcaption></figure>
+</section>
+
+<section class="card section" id="architecture">
+  <div class="section-head"><div><span class="section-no">08 / ARCHITECTURE</span><h2>建筑</h2></div><p>核心是“参考图转模型、展示模型、DCC 后处理”。最终交付：概念体块、立面展示或汇报资产。</p></div>
+  <div class="lane-grid print-intro-grid">
+    <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>建筑师、概念设计师、建筑可视化团队、地产营销团队、展陈空间设计师、城市更新顾问、景观团队、BIM / 数字孪生展示团队。</p><p><b>做什么：</b>建筑师做体块和外立面概念；可视化团队做汇报模型、动画和效果图资产；地产营销团队做售楼处、样板区和线上楼盘展示；展陈团队做展馆、城市沙盘和互动屏素材。</p><p><b>应用场景：</b></p><ul><li>概念体块：住宅、商业综合体、展馆、学校、办公楼和公共建筑早期方案。</li><li>立面构件：幕墙、窗墙、屋顶、入口、栏杆、装饰构件和街区界面。</li><li>地产营销：楼盘外观、景观节点、售楼处、样板区和宣传片模型。</li><li>城市更新：旧改街区、商业街、滨水空间、公共艺术和社区汇报。</li><li>实时展示：Web 3D、UE 漫游、展厅互动屏、数字沙盘和投标演示。</li></ul><p><b>产业背景：</b>AEC 行业正在从传统效果图走向 BIM、数字孪生和实时可视化；但早期概念和营销汇报仍需要大量非施工级、可快速迭代的视觉模型。</p><p><b>痛点需求：</b>需要快速表达体块和外观风格，但施工、结构、机电、造价和 BIM 数据仍需 Revit / Rhino / SketchUp / Archicad 等专业软件完成；Tripo 更适合概念外观、展示资产和汇报素材。</p></div>
+    <div class="lane"><h3>消费端</h3><p><b>用户画像：</b>地产公司、业主、政府 / 竞标评审、公众展示观众、购房者、商业空间租户、投资方和社区居民。</p><p><b>应用场景：</b></p><ul><li>方案汇报：业主会、投委会、政府报批前沟通和竞赛答辩。</li><li>竞标视觉：快速比较不同风格、体量、立面和商业氛围。</li><li>地产销售：楼盘外观、景观、公共空间、商业街和会所展示。</li><li>公众沟通：城市更新、社区改造、公共建筑和展馆方案说明。</li><li>线上看房：远程客户通过 3D / VR / 视频理解项目空间。</li></ul><p><b>消费市场背景：</b>地产和城市更新项目沟通周期长、参与方多，3D 可视化能把专业图纸转译成可被普通人理解的视觉语言，尤其适合线上销售和公众展示。</p><p><b>需求原因：</b>看懂建筑方案，快速比较风格，降低沟通成本；最怕模型结构逻辑不可信、比例失真、被误认为施工模型，或无法和现有 BIM / DCC 流程衔接。</p></div>
+  </div>
+  <div class="pipeline-map traditional-pipeline">
+    <h3>传统三维管线</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">方案建模与 BIM</div>
+        <div class="stage">场地资料 / 任务书 / 规划条件</div>
+        <div class="stage">概念草图 / 体块推演</div>
+        <div class="stage">CAD / Rhino / SketchUp / Revit 建模</div>
+        <div class="stage">方案深化：平面 / 立面 / 剖面 / 结构逻辑</div>
+        <div class="stage">BIM 协同：建筑 / 结构 / 机电</div>
+        <div class="stage">模型清理和分层</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">可视化与实时交付</div>
+        <div class="stage">材质赋予：幕墙 / 混凝土 / 木材 / 金属 / 玻璃 / 景观</div>
+        <div class="stage">场景搭建：地形 / 道路 / 植物 / 人物 / 车辆 / 周边建筑</div>
+        <div class="stage">灯光和相机：日景 / 夜景 / 黄昏 / 室内外视角</div>
+        <div class="stage">效果图 / 动画渲染</div>
+        <div class="stage">实时漫游：减面 / 贴图烘焙 / LOD / 碰撞 / 材质合并</div>
+        <div class="stage">导入 Twinmotion / Enscape / Unreal / Unity，VR、Web、展厅测试</div>
+      </div>
+    </div>
+    <p class="pipeline-note">最终交付包含效果图、漫游、投标动画、BIM 模型或数字孪生展示。</p>
+  </div>
+  <div class="pipeline-map">
+    <h3>流程管线 × 产品卖点对应</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">概念体块管线</div>
+        <div class="stage">草图 / 参考图</div>
+        <div class="stage">图片 / 文本生成模型</div>
+        <div class="stage">HD Model</div>
+        <div class="stage">OBJ / FBX / GLB</div>
+        <div class="stage">DCC 后处理</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">对应卖点</div>
+        <div class="selling-point"><strong>图片生成模型</strong>将草图或参考图转换为模型</div>
+        <div class="selling-point"><strong>文本生成模型</strong>用文字描述快速生成外观概念</div>
+        <div class="selling-point"><strong>HD Model</strong>用于高细节建筑展示模型</div>
+        <div class="selling-point"><strong>导出格式</strong>OBJ / FBX / GLB 进入 DCC 或实时展示流程</div>
+        <div class="selling-point"><strong>DCC 桥接到 Rhino / SketchUp / Blender</strong>导出后进入建筑可视化、材质灯光、汇报动画或实时漫游制作；不替代 BIM 工程母数据</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="feature-grid feature-grid-single">
+    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li>绑骨与动画：建筑主体通常是静态展示，不是角色或四足动物绑定场景</li><li>STL / 3MF：仅在实体沙盘或打印原型时需要，且不支持骨骼动画</li><li>HD Model 直接用于实时漫游：高面数会增加加载压力，应按实时展示需要转轻量资产</li></ul></div>
+  </div>
+  <div class="region"><strong>地区情况</strong><p>英国适合地产营销和高端建筑可视化；韩国适合现代商业空间表现；德国更看重结构逻辑和技术可信；北美适合地产、展馆和城市更新 pitch。</p></div>
+      <figure class="industry-visual"><img src="image/8.png" alt="建筑行业配图"><figcaption>P2.0格适合快速加载展示</figcaption></figure>
+</section>
+
+<section class="card section" id="arvr">
+  <div class="section-head"><div><span class="section-no">09 / AR / VR</span><h2>AR / VR</h2></div><p>核心是“Smart Mesh 智能网格 P2.0、轻量实时资产、GLB / USDZ”。最终交付：渲染图 / GLB / USDZ。</p></div>
+  <div class="lane-grid print-intro-grid">
+    <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>XR 应用团队、Unity / UE 开发者、Vision Pro / Quest 内容团队、虚拟偶像团队、电商品牌、展厅团队、工业培训团队、教育机构、VRChat / 社交 VR 创作者。</p><p><b>做什么：</b>XR 团队做可实时加载的空间道具、培训模型和交互资产；电商品牌做 AR 商品预览；虚拟社交创作者做 avatar、服饰、房间装饰和世界组件；企业团队做培训、展厅、远程协作和数字孪生展示。</p><p><b>应用场景：</b></p><ul><li>AR 商品：家具试摆、鞋包查看、美妆包装、3C 产品和家电展示。</li><li>VR 空间：展厅、培训场景、会议空间、游戏关卡、社交房间和品牌体验店。</li><li>avatar：人物、四足宠物、服饰、配饰、舞台、表情道具和粉丝互动资产。</li><li>工业培训：设备结构、操作步骤、危险场景、安全演练和维修说明。</li><li>教育展陈：博物馆、学校实验、城市规划、文旅导览和沉浸式课程。</li></ul><p><b>产业背景：</b>Quest、Vision Pro、移动 AR 和 WebXR 推动空间内容需求增长，但硬件性能、加载速度和用户眩晕问题让“轻量可实时运行”比单纯高精度更重要。</p><p><b>痛点需求：</b>VR / AR 对帧率、加载速度和交互稳定性要求高，必须优先轻量化实时资产：减面、重拓扑、控制贴图、合并材质、检查尺度和碰撞，再导出 GLB 或 USDZ。但如果是渲染好的VR/AR影片,需求又变成资产精细度要求</p></div>
+    <div class="lane"><h3>消费端</h3><p><b>用户画像：</b>Quest / Vision Pro / 移动 AR 用户、虚拟社交用户、VRChat 玩家、购物用户、品牌粉丝、企业培训学员、展厅参观者和学生。</p><p><b>应用场景：</b></p><ul><li>虚拟空间装饰：房间、展厅、舞台、桌面摆件、宠物和互动道具。</li><li>AR 商品预览：把家具放到家里、把鞋包配饰放到身体或桌面环境里看。</li><li>VRChat / avatar：形象、服装、饰品、动作、表情道具和世界组件。</li><li>培训体验：工厂设备、医疗演示、安全演练、维修流程和新员工培训。</li><li>展厅体验：品牌快闪、博物馆、地产沙盘、车展和教育互动屏。</li></ul><p><b>消费市场背景：</b>空间计算让 3D 资产从“屏幕里看”变成“放在现实或虚拟空间里用”；但用户耐心低，加载慢、卡顿、比例不准和交互不自然会快速破坏体验。</p><p><b>需求原因：</b>买的是沉浸感、互动感和身份表达；最怕资产太重导致掉帧、贴图糊、手机打不开、USDZ / GLB 不兼容或 avatar 绑定失败。</p></div>
+  </div>
+  <div class="pipeline-map traditional-pipeline">
+    <h3>传统三维管线</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">母版清理与轻量化</div>
+        <div class="stage">产品 CAD / 高精建模母版 / 扫描模型</div>
+        <div class="stage">清理模型：删除内部结构、不可见面、小零件</div>
+        <div class="stage">制作实时 AR / VR 版本</div>
+        <div class="stage">减面 / 重拓扑</div>
+        <div class="stage">UV 整理</div>
+        <div class="stage">合并材质，减少渲染批次</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">导出与设备验收</div>
+        <div class="stage">贴图烘焙：把高模细节烘到低模</div>
+        <div class="stage">压缩贴图，控制尺寸、格式和内存</div>
+        <div class="stage">设置真实比例和原点</div>
+        <div class="stage">导出 GLB / glTF / USDZ / FBX</div>
+        <div class="stage">Web model-viewer / WebXR、Android Scene Viewer、iOS AR Quick Look 测试</div>
+        <div class="stage">Unity / Unreal / Vision Pro / Quest 端测帧率、比例、阴影、交互、碰撞</div>
+      </div>
+    </div>
+    <div class="pipeline-branches">
+      <div class="branch"><strong>AR 商品预览</strong>CAD / 商品模型 → 轻量化 → GLB / USDZ → Scene Viewer / AR Quick Look。</div>
+      <div class="branch"><strong>VR 培训</strong>CAD / 工业模型 → 去内部细节 → 低模重建 → Unity / Unreal → Quest / PCVR 测试。</div>
+      <div class="branch"><strong>虚拟社交</strong>角色 / 服饰 / 道具 → 重拓扑 → 绑定 → 表情 / 动作 → 平台上传测试。</div>
+      <div class="branch"><strong>展厅互动</strong>高精展示模型 → 实时版本 → 引擎场景 → 触控屏 / VR / Web 展示。</div>
+    </div>
+  </div>
+  <div class="pipeline-map">
+    <h3>流程管线 × 产品卖点对应</h3>
+    <div class="pipeline-pair">
+      <div class="pipeline-track">
+        <div class="track-label">AR / VR 资产管线</div>
+        <div class="stage">图片 / 文本输入</div>
+        <div class="stage">Smart Mesh 智能网格 P2.0</div>
+        <div class="stage">生成纹理</div>
+        <div class="stage">GLB / USDZ</div>
+        <div class="stage">设备测试</div>
+      </div>
+      <div class="pipeline-track">
+        <div class="track-label">对应卖点</div>
+        <div class="selling-point"><strong>Smart Mesh 智能网格 P2.0</strong>约 10 秒生成规整低模资产，原生四边面 / 三角面可选</div>
+        <div class="selling-point"><strong>面数与拓扑设置</strong>三角面最高 50K、原生四边面最高 25K，适配 Web / AR / VR 性能预算</div>
+        <div class="selling-point"><strong>批量生成</strong>批量上传图片以提升空间资产生产效率</div>
+        <div class="selling-point"><strong>GLB</strong>内嵌纹理，适用于 WebXR、model-viewer 和 AR / VR 预览；如进入引擎项目，按目标平台的导入规范处理</div>
+        <div class="selling-point"><strong>USDZ</strong>iOS AR Quick Look 侧重格式</div>
+      </div></div>
+   
+</div>
+  <div class="feature-grid feature-grid-single">
+    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li>H3.1 高精度模型直接上头显：高面数对实时渲染性能压力大，VR / AR 对帧率要求高</li><li>非 T-pose 人类 / 非标准站立四足模型绑骨：不在当前绑骨适用范围内</li><li>STL / 3MF：不支持导出骨骼和动画，且不是 AR / VR 主流交付格式</li></ul></div>
+  </div>
+  <div class="region"><strong>地区情况</strong><p>加拿大和德国适合 XR / 工业培训；北美适合游戏和电商 AR；日本适合虚拟偶像、VRChat 和二次元 avatar；韩国适合虚拟人和娱乐内容。</p></div>
+      <figure class="industry-visual"><img src="image/9.png" alt="AR / VR 行业配图"><figcaption>AR / VR 格式区别</figcaption></figure>
+</section>
+      
+      </main>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const body = document.body;
+      const button = document.getElementById('themeToggle');
+      const setTheme = (theme) => {
+        body.dataset.theme = theme;
+        const dark = theme === 'dark';
+        button.textContent = dark ? '☀ 切换浅色预览' : '☾ 切换暗夜预览';
+        button.setAttribute('aria-pressed', String(dark));
+      };
+      setTheme(localStorage.getItem('tripo-theme') === 'dark' ? 'dark' : 'light');
+      button.addEventListener('click', () => {
+        const next = body.dataset.theme === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('tripo-theme', next);
+        setTheme(next);
+      });
+    })();
+  </script>
+</body>
+</html>
