@@ -123,6 +123,8 @@
     summary{list-style:none;cursor:pointer;padding:14px 16px;font-weight:600;background:#f6f3ff;color:#38246e}
     summary::-webkit-details-marker{display:none}
     .details-body{padding:0 16px 16px;color:var(--muted);font-size:.92rem}
+    .details-body a{color:var(--accent-strong);font-weight:600;text-decoration-thickness:1px;text-underline-offset:3px}
+    .details-body a:hover{color:var(--accent)}
     .sources{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
     .source-list{margin:0;padding-left:18px;color:var(--muted)}
     .source-list li{margin:4px 0}
@@ -317,6 +319,7 @@
   </div>
   <div class="region"><strong>地区情况</strong><p>英国是 Warhammer 发源地，战棋涂装氛围浓厚；美国、加拿大和英国适合从 DIY 走向 Etsy 小店变现；法国在 Cults / FabLab 和设计感模型上信号强；德国功能件和可打印 STL 文件交易销量高；巴西 / 西语市场适合开箱和社群投放。</p></div>
       <figure class="industry-visual"><img src="image/1.png" alt="3D 打印行业配图"><figcaption>3D 打印行业跑团TRPG模型</figcaption></figure>
+  <details><summary>扩展资料：3D 打印</summary><div class="details-body"><ul class="source-list"><li><a href="https://help.prusa3d.com/article/first-steps-with-3d-printing_1757" target="_blank" rel="noopener">Prusa 3D Printing 基础</a>：从切片、材料到首次打印，适合建立完整打印流程认知。</li><li><a href="https://all3dp.com/2/non-manifold-edges-what-are-they-and-how-to-fix-them/" target="_blank" rel="noopener">All3DP：Non-manifold edges</a>：理解水密、非流形边和打印前网格检查。</li></ul></div></details>
 </section>
 
 <section class="card section" id="game">
@@ -414,6 +417,7 @@
   <div class="region"><strong>地区情况</strong><p>北美和欧洲更适合中高预算独立游戏、虚幻引擎、虚拟制作和外包采购；日本更偏角色、怪物、二次元、移动游戏和轻量素材；韩国更偏角色、美术效率、网游运营和虚拟社交；东南亚和拉美更常见低成本原型、手游、UGC 和素材拼装型团队。</p></div>
       <figure class="industry-visual"><img src="image/2.jpg" alt="游戏行业配图"><figcaption>游戏模型对拓扑要求很高直接影响呈现效果</figcaption></figure>
        <figure class="industry-visual"><img src="image/10.jpg" alt="游戏行业配图2"><figcaption>游戏场景面数一般偏低，需要控制显卡消耗，从上到下：渲染场景，白膜，线框场景</figcaption></figure>
+  <details><summary>扩展资料：游戏</summary><div class="details-body"><ul class="source-list"><li><a href="https://docs.unity3d.com/Manual/OptimizingGraphicsPerformance.html" target="_blank" rel="noopener">Unity：Graphics performance</a>：了解面数、材质、批次和目标平台性能之间的关系。</li><li><a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/fbx-content-pipeline" target="_blank" rel="noopener">Unreal Engine：FBX Content Pipeline</a>：理解模型、材质、骨骼和动画进入引擎时的交付边界。</li></ul></div></details>
 </section>
 
 <section class="card section" id="interior">
@@ -493,6 +497,7 @@
   </div>
   <div class="region"><strong>地区情况</strong><p>英国法国适合高端独立站和自由职业设计师；韩国适合现代家居和快速提案；巴西适合家装改造和社媒展示；德国做实时漫游时要强调轻量和格式稳定。</p></div>
       <figure class="industry-visual"><img src="image/3.png" alt="室内设计行业配图"><figcaption>室内白膜渲染，对渲染精度要求高</figcaption></figure>
+  <details><summary>扩展资料：室内设计</summary><div class="details-body"><ul class="source-list"><li><a href="https://help.sketchup.com/en/sketchup/3d-warehouse" target="_blank" rel="noopener">SketchUp 3D Warehouse</a>：观察家具、软装和空间资产如何以可复用模型服务设计提案。</li><li><a href="https://www.autodesk.com/solutions/3d-rendering" target="_blank" rel="noopener">Autodesk：3D rendering</a>：了解材质、灯光、相机和渲染如何共同影响空间表达。</li></ul></div></details>
 </section>
 
 <section class="card section" id="film">
@@ -580,6 +585,7 @@
   <div class="region"><strong>地区情况</strong><p>日本适合二次元、怪物、三渲二和 VTuber；韩国适合高完成度角色短片和团队提效；法国偏作者感和艺术动画；北美适合独立短片和游戏宣传。</p></div>
       <figure class="industry-visual"><img src="image/4.png" alt="影视动画行业配图"><figcaption>控制网格服务变形，渲染阶段再细分</figcaption></figure>
             <figure class="industry-visual"><img src="image/10.png" alt="影视动画行业配图"><figcaption>影视行业渲染层：为了细节表现配合置换贴图与细分，面数在百万和千万级别</figcaption></figure>
+  <details><summary>扩展资料：影视动画</summary><div class="details-body"><ul class="source-list"><li><a href="https://docs.blender.org/manual/en/latest/animation/index.html" target="_blank" rel="noopener">Blender Manual：Animation</a>：梳理绑定、关键帧、约束和动画制作等后续环节。</li><li><a href="https://openusd.org/release/index.html" target="_blank" rel="noopener">OpenUSD 官方文档</a>：了解影视与虚拟制作中跨软件协作、场景描述和资产组合。</li></ul></div></details>
 </section>
 
 <section class="card section" id="fashion">
@@ -642,6 +648,7 @@
   </div>
   <div class="region"><strong>地区情况</strong><p>西班牙适合数字时尚、配饰和艺术装置；韩国适合潮流视觉和快速上新；日本适合二次元服饰和虚拟偶像；北美适合 DTC 品牌和社媒广告。</p></div>
       <figure class="industry-visual"><img src="image/5.png" alt="时尚设计行业配图"><figcaption>C4D流程渲染服装效果</figcaption></figure>
+  <details><summary>扩展资料：时尚设计</summary><div class="details-body"><ul class="source-list"><li><a href="https://support.clo3d.com/hc/en-us" target="_blank" rel="noopener">CLO 官方帮助中心</a>：了解 2D 版型、虚拟试衣、面料参数和服装 3D 打样。</li><li><a href="https://www.browzwear.com/" target="_blank" rel="noopener">Browzwear</a>：补充数字样衣、尺码和服装生产协作的行业视角。</li></ul></div></details>
 </section>
 
 <section class="card section" id="commerce">
@@ -718,6 +725,7 @@
   </div>
   <div class="region"><strong>地区情况</strong><p>美国适合 Shopify、独立站和 UGC 商品广告；英国适合高端独立站视觉服务；德国强调格式和加载速度；西班牙适合时尚配饰；土耳其适合低成本商品图。</p></div>
       <figure class="industry-visual"><img src="image/6.png" alt="产品电商行业配图"><figcaption>电商效果渲染</figcaption></figure>
+  <details><summary>扩展资料：产品电商</summary><div class="details-body"><ul class="source-list"><li><a href="https://modelviewer.dev/docs/" target="_blank" rel="noopener">Google model-viewer 文档</a>：了解网页端加载 GLB、材质、交互和 AR 预览的基本方式。</li><li><a href="https://developer.apple.com/augmented-reality/quick-look/" target="_blank" rel="noopener">Apple AR Quick Look</a>：理解 USDZ 在 iOS 商品 AR 预览中的使用场景。</li></ul></div></details>
 </section>
 
 <section class="card section" id="industrial">
@@ -780,6 +788,7 @@
   </div>
   <div class="region"><strong>地区情况</strong><p>德国最适合强调工程严谨、拓扑、格式和 XR 培训；加拿大适合空间计算和工业 XR；美国适合硬件创业和众筹视觉资产；土耳其适合教育和低价试用。</p></div>
       <figure class="industry-visual"><img src="image/7.png" alt="工业设计行业配图"><figcaption>工业NURBS 流程</figcaption></figure>
+  <details><summary>扩展资料：工业设计</summary><div class="details-body"><ul class="source-list"><li><a href="https://www.autodesk.com/products/fusion-360/blog/what-is-industrial-design/" target="_blank" rel="noopener">Autodesk：What is industrial design?</a>：了解产品定义、造型、用户需求和工程落地之间的关系。</li><li><a href="https://www.nngroup.com/articles/design-thinking/" target="_blank" rel="noopener">Nielsen Norman Group：Design Thinking</a>：补充从用户问题、原型到验证的设计流程视角。</li></ul></div></details>
 </section>
 
 <section class="card section" id="architecture">
@@ -839,6 +848,7 @@
   </div>
   <div class="region"><strong>地区情况</strong><p>英国适合地产营销和高端建筑可视化；韩国适合现代商业空间表现；德国更看重结构逻辑和技术可信；北美适合地产、展馆和城市更新 pitch。</p></div>
       <figure class="industry-visual"><img src="image/8.png" alt="建筑行业配图"><figcaption>P2.0格适合快速加载展示</figcaption></figure>
+  <details><summary>扩展资料：建筑</summary><div class="details-body"><ul class="source-list"><li><a href="https://www.autodesk.com/solutions/bim" target="_blank" rel="noopener">Autodesk：BIM 介绍</a>：理解建筑展示模型与 BIM 协同、信息和工程交付的差异。</li><li><a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/architectural-visualization" target="_blank" rel="noopener">Unreal Engine：Architectural Visualization</a>：了解建筑模型进入实时漫游、交互展示和虚拟体验的路径。</li></ul></div></details>
 </section>
 
 <section class="card section" id="arvr">
@@ -902,6 +912,7 @@
   </div>
   <div class="region"><strong>地区情况</strong><p>加拿大和德国适合 XR / 工业培训；北美适合游戏和电商 AR；日本适合虚拟偶像、VRChat 和二次元 avatar；韩国适合虚拟人和娱乐内容。</p></div>
       <figure class="industry-visual"><img src="image/9.png" alt="AR / VR 行业配图"><figcaption>AR / VR 格式区别</figcaption></figure>
+  <details><summary>扩展资料：AR / VR</summary><div class="details-body"><ul class="source-list"><li><a href="https://www.khronos.org/gltf/" target="_blank" rel="noopener">Khronos glTF / GLB</a>：了解面向运行时传输的 3D 格式、材质和轻量化定位。</li><li><a href="https://immersiveweb.dev/" target="_blank" rel="noopener">Immersive Web 官方资源</a>：了解 WebXR、设备能力和浏览器端沉浸式体验。</li></ul></div></details>
 </section>
       
       </main>
