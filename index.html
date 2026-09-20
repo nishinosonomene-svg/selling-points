@@ -310,9 +310,9 @@
       </div>
       <div class="pipeline-track">
         <div class="track-label">对应卖点功能</div>
-        <div class="selling-point"><strong>图片 / 文本生成模型</strong>照片、草图或文字快速快速优化生成参考图</div>
+        <div class="selling-point"><strong>图片 / 文本生成模型</strong>照片、草图或文字快速快速优化生成参考图，支持GPT Image 2.5模型</div>
         <div class="selling-point"><strong>H3.1 高精度模型生成</strong>最高约 200 万面，保留雕刻与曲面细节</div>
-        <div class="selling-point"><strong>导出白模</strong>关闭纹理导出白模，专注 STL 几何与轮廓检查</div>
+        <div class="selling-point"><strong>支持白模</strong>关闭纹理导出白模，专注 STL 几何与轮廓检查，或开启纹理彩色打印</div>
         <div class="selling-point"><strong>智能拆分</strong>低 / 中 / 高档位不同拆件精细度，变为可编辑部件，再进行补全封闭，便于分体打印</div>
         <div class="selling-point"><strong>导出与直连</strong>STL / OBJ / 3MF，或发送到 Bambu Studio</div>
 
@@ -335,7 +335,7 @@
   <div class="lane-grid print-intro-grid">
     <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>独立游戏开发者、小型美术团队、UGC 资产作者、Roblox / Fortnite / UEFN 地图作者、MOD 作者、外包资产团队、游戏原型团队、学生和 Game Jam 团队。</p>
       <p><b>做什么：</b>小团队负责把角色、怪物、武器、载具、建筑、环境件、关卡填充物做成可进 Unity / UE 的资产；外包团队负责批量产出风格统一的道具包；UGC 作者负责做 avatar、皮肤、地图装饰和可售卖模板。</p>
-      <p><b>应用场景：</b></p><ul><li>原型阶段：快速生成 pitch demo、试玩关卡、trailer 里的临时资产。</li><li>量产阶段：生成武器、宝箱、路障、路灯、家具、建筑立面、植被、怪物变体等中低重要度资产。</li><li>角色阶段：用多视图或 T-pose 生成主角 / NPC 基础模型，再做重拓扑、绑骨和动画。</li><li>UGC / MOD：给创作者提供可直接上传或二次编辑的头像、皮肤、地图组件和装饰件。</li><li>资产商店：制作低模包、风格化道具包、场景包、怪物包和主题化模板。</li></ul><p><b>产业背景：</b>游戏产业已经从“大作自研美术”扩展到“自制 + 外包 + 资产商店 + UGC 创作”混合模式；Unity Asset Store、Fab / Unreal 生态和大量独立开发工具链，把“买资产、拼资产、改资产”变成常态。</p><p><b>痛点需求：</b>实时游戏资产不能把几十万到 200 万面的高模直接绑定或进引擎；普通道具优先采用 Smart Mesh 智能网格 P2.0 的原生四边面或三角面低模直出，重要资产再做减面 / 重拓扑，并进入绑定、动画、LOD、碰撞体和引擎测试流程。P2.0 支持三角面最高 50K、原生四边面最高 25K，在可控面数下输出规整 edge loop，便于后续 LOD 与游戏生产。</p></div>
+      <p><b>应用场景：</b></p><ul><li>原型阶段：快速生成 pitch demo、试玩关卡、trailer 里的临时资产。</li><li>量产阶段：生成武器、宝箱、路障、路灯、家具、建筑立面、植被、怪物变体等中低重要度资产。</li><li>角色阶段：用多视图或 T-pose 生成主角 / NPC 基础模型，再做重拓扑、绑骨和动画。</li><li>UGC / MOD：给创作者提供可直接上传或二次编辑的头像、皮肤、地图组件和装饰件。</li><li>资产商店：制作低模包、风格化道具包、场景包、怪物包和主题化模板。</li></ul><p><b>产业背景：</b>游戏产业已经从“大作自研美术”扩展到“自制 + 外包 + 资产商店 + UGC 创作”混合模式；Unity Asset Store、Fab / Unreal 生态和大量独立开发工具链，把“买资产、拼资产、改资产”变成常态。</p><p><b>痛点需求：</b>实时游戏资产不能把几十万到 200 万面的高模直接绑定或进引擎；普通道具优先采用 Smart Mesh 智能网格 P2.0 的原生四边面或三角面低模直出，重要资产再做减面 / 重拓扑，并进入绑定、动画、LOD、碰撞体和引擎测试流程。P2.0 支持三角面最高 50K、原生四边面最高 25K，在可控面数下输出规整 edge loop，便于后续 LOD 与游戏生产。需要补充的是UE引擎nanite功能支持，H3.1的200w面高模可直接作为高规格静态资产来源，减少传统高模到低模再烘焙法线的依赖。</p></div>
 
     <div class="lane"><h3>消费端</h3><p><b>用户画像：</b>独立游戏主创、发行 / 运营团队、关卡设计师、技术美术、虚拟世界搭建者、UGC 买家、MOD 玩家、VRChat / avatar 创作者、教育用户和普通玩家。</p><p><b>应用场景：</b></p>
       <ul><li>直播 / 社媒：创作者用游戏角色和场景做短视频、封面、虚拟直播背景。</li>
@@ -379,6 +379,11 @@
       <div class="branch"><strong>UE / PC / 主机</strong>可以更高精，但仍要做重拓扑、LOD 和材质规范。</div>
       <div class="branch"><strong>UGC / avatar</strong>更重视骨骼规范、可换装、平台上传限制和授权安全。</div>
     </div>
+    <P><h4>传统游戏管线中UV和贴图痛点(P2.0解决)</h4><li>UV接缝位置靠人工判断，常落在脸部、外露面或变形区接缝、色差、法线断裂，返工到贴图阶段才暴露</li>
+     <li>自动展开容易拉伸、碎片化，UV 利用率低纹理细节被拉花；同等清晰度下需要更大贴图，增加显存与包体</li> 
+     <li>AI/扫描模型面数高、拓扑杂乱常规 UV 工具算得慢、结果不稳定，技术美术需要反复清理</li>
+     <li>参考图自带阴影、高光、环境色烘进 Base Color 后，资产进引擎会“二次受光”，显脏、难统一</li>
+   </P>
   </div>
   <div class="pipeline-map">
     <h3>流程管线 × 产品卖点对应</h3>
@@ -386,17 +391,17 @@
       <div class="pipeline-track">
         <div class="track-label">静态道具 / 场景资产管线</div>
         <div class="stage">图片生成 / 批量上传</div>
-        <div class="stage">Smart Mesh 智能网格</div>
+        <div class="stage">P2.0或H3.1模型生成</div>
         <div class="stage">原生四边面 500–25K</div>
-        <div class="stage">生成纹理贴图</div>
+        <div class="stage">智能UV和纹理生成</div>
         <div class="stage">批量导出 / 发送到 DCC</div>
       </div>
       <div class="pipeline-track">
         <div class="track-label">对应卖点</div>
-        <div class="selling-point"><strong>Smart Mesh 智能网格</strong>原生四边面 / 三角面低模直出，适合静态道具、场景资产与批量铺量</div>
-        <div class="selling-point"><strong>面数与拓扑</strong>三角面最高 50K；原生四边面最高 25K，edge loop 规整，适配实时加载与后续 LOD</div>
+        <div class="selling-point"><strong>图片模块</strong>模板生成 / 模板编辑，多图 + 文字引导编辑，文生图、图文结合生成、转多视图等功能。支持GPT Image 2.5模型生图</div>
+        <div class="selling-point"><strong>tripo模型区别</strong>使用 H3.1实现前景核心模型，比如高保真UEnanite资产或其他游戏引擎的烘焙来源、预渲染资产。P2.0适合远景建筑和小型道具或其他游戏引擎使用静态道具、场景资产与批量铺量</div>
         <div class="selling-point"><strong>多视角生成与局部编辑</strong>同一输入一次最多生成 4 个变体；局部编辑只重试一个部位，不影响其他部分</div>
-        <div class="selling-point"><strong>纹理贴图生成</strong>基于参考图生成不同分辨率纹理贴图，支持2K-8K</div>
+        <div class="selling-point"><strong>智能UV和纹理生成</strong>基于参考图生成不同分辨率纹理贴图，支持2K-8K。智能UV自动判定接缝位置，一键展开干净 UV支持重拆</div>
         <div class="selling-point"><strong>DCC 桥接到 游戏引擎</strong>导出后桥接到UE、Unity等游戏引擎，并可在专业内容制作工具中继续处理</div>
       </div>
     </div>
@@ -412,15 +417,15 @@
       <div class="pipeline-track">
         <div class="track-label">对应卖点</div>
         <div class="selling-point"><strong>文字/多视图/生成模型</strong>可以勾选T-pose更好约束生成效果，便于绑骨</div>
-        <div class="selling-point"><strong>Smart Mesh 智能网格</strong>角色资产可按实时资产思路生成原生四边面低模最高 25K，edge loop 规整，便于后续制作</div>
+        <div class="selling-point"><strong>Smart Mesh 智能网格</strong>角色资产可按实时资产思路生成原生四边面低模最高 25K，edge loop 规整，便于后续制作。【特别说明UE的nanite支持骨骼动画，H3.1可用于高精度模型和作为烘焙来源】</div>
         <div class="selling-point"><strong>局部调整 & 4K/8K贴图</strong>对称性 / 比例调整 / 局部编辑，以控制角色一致性，局部重试，不影响整体生成结果</div>
-        <div class="selling-point"><strong>绑骨与动画</strong>目前支持 T-pose 人类和标准站立姿势的四足动物，100+动作预设包含基础、情感、互动、专业场景的动作效果</div>
+        <div class="selling-point"><strong>绑骨与动画</strong>目前支持 T-pose 人类和标准站立姿势的四足动物，并且有五套绑骨预设。支持文字描述生成 1-10s 动画，连续动画编排，AI 动作库等功能</div>
         <div class="selling-point"><strong>FBX 导出 / 桥接到引擎</strong>已绑骨和添加动作后可选择导出带有骨骼和动画的FBX，并桥接至其他DCC平台进行后续编辑，支持 Blender / Mixamo等适配格式</div>
       </div>
     </div>
   </div>
   <div class="feature-grid feature-grid-single">
-    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li> H3.1 高精度模型：最高约 200 万面，不能直接作为实时游戏引擎交付资产。</li><li>高面数模型直接绑定骨骼+动画：应先减面 / 重拓扑，避免有穿模和拓扑问题</li><li>全资产 8K 贴图：只适合核心资产静态展示，泛用会增加包体和显存压力，一般2K-4K贴图</li></ul></div>
+    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li> H3.1 高精度模型：最高约 200 万面，不能直接作为实时游戏引擎交付资产但能作为烘焙来源。在特定情况比如UE引擎支持nanite功能可以宣传高精度高保真直接导入ue使用</li><li>高面数模型直接绑定骨骼+动画：应先减面 / 重拓扑，避免有穿模和拓扑问题</li><li>全资产 8K 贴图：只适合核心资产静态展示，泛用会增加包体和显存压力，一般2K-4K贴图</li></ul></div>
   </div>
   <div class="region"><strong>地区情况</strong><p>北美和欧洲更适合中高预算独立游戏、虚幻引擎、虚拟制作和外包采购；日本更偏角色、怪物、二次元、移动游戏和轻量素材；韩国更偏角色、美术效率、网游运营和虚拟社交；东南亚和拉美更常见低成本原型、手游、UGC 和素材拼装型团队。</p></div>
       <div class="industry-visual-grid">
@@ -565,7 +570,7 @@
       <div class="pipeline-track">
         <div class="track-label">对应卖点</div>
         <div class="selling-point"><strong>多视图生成模型</strong>上传4视图，提升结构准确和细节表现</div>
-        <div class="selling-point"><strong>H3.1高精度模型</strong>最高约 200 万面，用于高保真细节和影视级静态渲染</div>
+        <div class="selling-point"><strong>H3.1高精度模型</strong>最高约 200 万面，用于高保真细节和影视级静态渲染。也适合UE参与的虚拟制片和影视级别广告片渲染</div>
         <div class="selling-point"><strong>8K纹理 / PBR</strong>支持文本、图片、多视图生成纹理和真实光照逻辑材质，8K超高清分辨率，适合静态资产交付和展示</div>
         <div class="selling-point"><strong>DCC 桥接到 Blender / Maya / 3ds Max / Zbrush进一步雕刻</strong>导出后进入绑定、动画、LookDev、镜头渲染与合成流程；虚拟制片项目再按需进入实时制作流程</div>
       </div>
@@ -583,8 +588,8 @@
         <div class="track-label">对应卖点</div>
         <div class="selling-point"><strong>文字/多视图生成模型</strong>可以勾选T-pose更好约束生成效果，便于绑骨</div>
         <div class="selling-point"><strong>Smart Mesh 智能网格生成</strong>角色资产可按实时资产思路生成原生四边面低模最高 25K，edge loop 规整，便于后续动画制作</div>
-        <div class="selling-point"><strong>骨骼绑定</strong>目前支持 T-pose 人类和标准站立姿势的四足动物，可打开骨骼开关查看绑定骨骼形态</div>
-        <div class="selling-point"><strong>100+动作预设</strong>包含基础、情感、互动、专业场景的动作效果，模型绑定后可选择动作并预览</div>
+        <div class="selling-point"><strong>骨骼绑定</strong>目前支持 T-pose 人类和标准站立姿势的四足动物，并且有五套绑骨预设。</div>
+        <div class="selling-point"><strong>100+动作预设</strong>支持文字描述生成 1-10s 动画，连续动画编排，AI 动作库等功能</div>
         <div class="selling-point"><strong>导出骨骼和动画</strong>FBX 可按软件选择适合 Blender、Mixamo、3ds Max 的导出格式</div>
       </div>
     </div>
@@ -734,9 +739,12 @@
 </section>
 
 <section class="card section" id="industrial">
-  <div class="section-head"><div><span class="section-no">07 / INDUSTRIAL DESIGN</span><h2>工业设计</h2></div><p>核心需求是“高保真概念、重拓扑、线框展示”。最终交付：交付demo预览，渲染评审或跨平台展示资产。</p></div>
+  <div class="section-head"><div><span class="section-no">07 / INDUSTRIAL DESIGN</span><h2>工业设计</h2></div><p>核心需求是“高保真概念、重拓扑、线框展示”。最终交付：交付demo预览，渲染评审或跨平台展示资产。还有汽车的HMI</p></div>
   <div class="lane-grid print-intro-grid">
-    <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>工业设计师、产品经理、结构工程师、汽车 / 机械团队、消费电子团队、家具工厂、硬件创业团队、展会演示团队、售前技术团队。</p><p><b>做什么：</b>设计师做产品外观和系列概念；产品经理做评审用视觉样机；工程团队做非制造级展示模型、培训模型和部件说明；销售团队做展会、招投标和客户沟通用 3D 演示。</p><p><b>应用场景：</b></p><ul><li>消费电子：耳机、音箱、遥控器、按钮、接口、外壳和桌面配件。</li><li>汽车 / 出行：外观概念、内饰组件、轮毂、座椅、仪表、充电桩和展示模型。</li><li>机械设备：罩壳、控制面板、机械臂外观、传感器、工具头和培训演示件。</li><li>家具 / 家电：椅子、灯具、小家电、收纳件和系列化造型探索。</li><li>市场测试：同一产品多风格、多配色、多比例生成，用于内部评审和用户调研。</li></ul><p><b>产业背景：</b>制造业产品开发越来越强调快速迭代和数字样机，工业设计前端需要大量“看起来可信、能沟通方向”的 3D 概念；但真正投产仍依赖 CAD、工程约束、公差和材料工艺。</p><p><b>痛点需求：</b>更快从草图 / 参考图进入可旋转方案，减少物理样机次数，降低跨部门沟通成本，并把概念模型复用于渲染、展会、培训、售前和说明书。工业设计数据严谨性高，要服务造型、结构、装配、公差和制造；Tripo 更适合概念、渲染评审、网格化展示和营销培训，不适合直接替代 STEP / IGES / SolidWorks / Creo 的制造级 CAD 数据。</p></div>
+    <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>工业设计师、产品经理、结构工程师、汽车 / 机械团队、消费电子团队、家具工厂、硬件创业团队、展会演示团队、售前技术团队。</p><p><b>做什么：</b>设计师做产品外观和系列概念；产品经理做评审用视觉样机；工程团队做非制造级展示模型、培训模型和部件说明；销售团队做展会、招投标和客户沟通用 3D 演示。</p><p><b>应用场景：</b></p><ul><li>消费电子：耳机、音箱、遥控器、按钮、接口、外壳和桌面配件。</li><li>汽车 / 出行：外观概念、内饰组件、轮毂、座椅、仪表、充电桩和展示模型。</li><li>机械设备：罩壳、控制面板、机械臂外观、传感器、工具头和培训演示件。</li><li>家具 / 家电：椅子、灯具、小家电、收纳件和系列化造型探索。</li><li>市场测试：同一产品多风格、多配色、多比例生成，用于内部评审和用户调研。</li><li>汽车HMI：当实体车辆发生任何变化（例如打开车门）都会通过仪表板上显示的3D模型实时呈现出来。</li>
+    </ul>
+
+      <p><b>产业背景：</b>制造业产品开发越来越强调快速迭代和数字样机，工业设计前端需要大量“看起来可信、能沟通方向”的 3D 概念；但真正投产仍依赖 CAD、工程约束、公差和材料工艺。</p><p><b>痛点需求：</b>更快从草图 / 参考图进入可旋转方案，减少物理样机次数，降低跨部门沟通成本，并把概念模型复用于渲染、展会、培训、售前和说明书。工业设计数据严谨性高，要服务造型、结构、装配、公差和制造；Tripo 更适合概念、渲染评审、网格化展示、营销培训和汽车等产品配件的广告制作，不适合直接替代 STEP / IGES / SolidWorks / Creo 的制造级 CAD 数据。</p></div>
     <div class="lane"><h3>消费端</h3><p><b>用户画像：</b>品牌方、制造企业、采购团队、经销商、展会观众、培训学员、评审委员会、众筹支持者和企业客户。</p><p><b>应用场景：</b></p><ul><li>内部评审：设计、产品、工程、市场和老板快速比较方案。</li><li>客户提案：售前把设备、零部件或硬件产品讲清楚。</li><li>展会展示：大屏旋转模型、爆炸图、功能动线和产品系列墙。</li><li>培训说明：维修、安装、安全操作和部件识别。</li><li>众筹 / 预售：在模具和量产前展示外观、功能和尺寸感。</li></ul><p><b>消费市场背景：</b>硬件和设备销售越来越依赖数字化展示，尤其远程销售、国际展会和线上发布会需要在没有实物或不方便运输时讲清产品。</p><p><b>需求原因：</b>买的是概念验证、展示效率和沟通成本下降；最怕模型看起来像玩具、比例不可信、无法解释结构逻辑，或被误认为可以直接制造。</p></div>
   </div>
   <div class="pipeline-map traditional-pipeline">
@@ -779,7 +787,7 @@
       <div class="pipeline-track">
         <div class="track-label">对应卖点</div>
         <div class="selling-point"><strong>图片生成模型</strong>将草图或图片转为概念模型</div>
-        <div class="selling-point"><strong>HD Model</strong>用于高保真几何结构和外观细节</div>
+        <div class="selling-point"><strong>HD Model</strong>用于高保真几何结构和外观细节，如果是汽车HMI行业需要换成P2.0模型增加加载速度</div>
         <div class="selling-point"><strong>重拓扑</strong>将高面数模型整理为低面数、结构更规整的模型</div>
         <div class="selling-point"><strong>纹理 / PBR</strong>补齐外观材质，提升评审可信度</div>
         <div class="selling-point"><strong>导出格式</strong>OBJ / FBX / GLB 用于渲染评审或跨平台展示</div>
@@ -798,7 +806,7 @@
 <section class="card section" id="architecture">
   <div class="section-head"><div><span class="section-no">08 / ARCHITECTURE</span><h2>建筑</h2></div><p>核心需求是“参考图转模型、展示模型、结构化和概念验证，3D打印微缩模型和景观”。最终交付：概念体块、立面展示或汇报资产、3D打印实体。</p></div>
   <div class="lane-grid print-intro-grid">
-    <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>建筑师、概念设计师、建筑可视化团队、地产营销团队、展陈空间设计师、城市更新顾问、景观团队、BIM / 数字孪生展示团队。</p><p><b>做什么：</b>建筑师做体块和外立面概念；可视化团队做汇报模型、动画和效果图资产；地产营销团队做售楼处、样板区和线上楼盘展示；展陈团队做展馆、城市沙盘和互动屏素材。</p><p><b>应用场景：</b></p><ul><li>概念体块：住宅、商业综合体、展馆、学校、办公楼和公共建筑早期方案。</li><li>立面构件：幕墙、窗墙、屋顶、入口、栏杆、装饰构件和街区界面。</li><li>地产营销：楼盘外观、景观节点、售楼处、样板区和宣传片模型。</li><li>城市更新：旧改街区、商业街、滨水空间、公共艺术和社区汇报。</li><li>实时展示：Web 3D、UE 漫游、展厅互动屏、数字沙盘和投标演示。</li></ul><p><b>产业背景：</b>AEC 行业正在从传统效果图走向 BIM、数字孪生和实时可视化；但早期概念和营销汇报仍需要大量非施工级、可快速迭代的视觉模型。</p><p><b>痛点需求：</b>需要快速表达体块和外观风格，但施工、结构、机电、造价和 BIM 数据仍需 Revit / Rhino / SketchUp / Archicad 等专业软件完成；Tripo 更适合概念外观、展示资产和汇报素材。</p></div>
+    <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>建筑师、概念设计师、建筑可视化团队、地产营销团队、展陈空间设计师、城市更新顾问、景观团队、BIM / 数字孪生展示团队。</p><p><b>做什么：</b>建筑师做体块和外立面概念；可视化团队做汇报模型、动画和效果图资产；地产营销团队做售楼处、样板区和线上楼盘展示；展陈团队做展馆、城市沙盘和互动屏素材。</p><p><b>应用场景：</b></p><ul><li>概念体块：住宅、商业综合体、展馆、学校、办公楼和公共建筑早期方案。</li><li>立面构件：幕墙、窗墙、屋顶、入口、栏杆、装饰构件和街区界面。</li><li>地产营销：楼盘外观、景观节点、售楼处、样板区和宣传片模型。</li><li>城市更新：旧改街区、商业街、滨水空间、公共艺术和社区汇报。</li><li>实时展示：Web 3D、UE 漫游、展厅互动屏、数字孪生和投标演示。</li></ul><p><b>产业背景：</b>AEC 行业正在从传统效果图走向 BIM、数字孪生和实时可视化；但早期概念和营销汇报仍需要大量非施工级、可快速迭代的视觉模型。</p><p><b>痛点需求：</b>需要快速表达体块和外观风格，但施工、结构、机电、造价和 BIM 数据仍需 Revit / Rhino / SketchUp / Archicad 等专业软件完成；Tripo 更适合概念外观、展示资产和汇报素材。</p></div>
     <div class="lane"><h3>消费端</h3><p><b>用户画像：</b>地产公司、业主、政府 / 竞标评审、公众展示观众、购房者、商业空间租户、投资方和社区居民。</p><p><b>应用场景：</b></p><ul><li>方案汇报：业主会、投委会、政府报批前沟通和竞赛答辩。</li><li>竞标视觉：快速比较不同风格、体量、立面和商业氛围。</li><li>地产销售：楼盘外观、景观、公共空间、商业街和会所展示。</li><li>公众沟通：城市更新、社区改造、公共建筑和展馆方案说明。</li><li>线上看房：远程客户通过 3D / VR / 视频理解项目空间。</li></ul><p><b>消费市场背景：</b>地产和城市更新项目沟通周期长、参与方多，3D 可视化能把专业图纸转译成可被普通人理解的视觉语言，尤其适合线上销售和公众展示。</p><p><b>需求原因：</b>看懂建筑方案，快速比较风格，降低沟通成本；最怕模型结构逻辑不可信、比例失真、被误认为施工模型，或无法和现有 BIM / DCC 流程衔接。</p></div>
   </div>
   <div class="pipeline-map traditional-pipeline">
@@ -839,7 +847,7 @@
       <div class="pipeline-track">
         <div class="track-label">对应卖点</div>
         <div class="selling-point"><strong>图片生成模型</strong>将草图或图片转为概念模型</div>
-        <div class="selling-point"><strong>HD Model高精度模型生成</strong>用于高细节建筑展示模型</div>
+        <div class="selling-point"><strong>HD Model高精度模型生成</strong>用于高细节建筑展示模型，也适合进UE数字孪生流程</div>
         <div class="selling-point"><strong>8K贴图 / PBR</strong>支持8K分辨率的超高清贴图，生成和局部编辑纹理，以达到建筑外立面真实光照逻辑材质</div>
         <div class="selling-point"><strong>导出格式</strong>OBJ / FBX / GLB 进入 DCC 或实时展示流程</div>
         <div class="selling-point"><strong>DCC 桥接</strong>导出后进入建筑可视化、材质灯光、汇报动画或实时漫游制作；但不可替代 BIM 工程母数据</div>
