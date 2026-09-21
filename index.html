@@ -335,7 +335,13 @@
   <div class="lane-grid print-intro-grid">
     <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>独立游戏开发者、小型美术团队、UGC 资产作者、Roblox / Fortnite / UEFN 地图作者、MOD 作者、外包资产团队、游戏原型团队、学生和 Game Jam 团队。</p>
       <p><b>做什么：</b>小团队负责把角色、怪物、武器、载具、建筑、环境件、关卡填充物做成可进 Unity / UE 的资产；外包团队负责批量产出风格统一的道具包；UGC 作者负责做 avatar、皮肤、地图装饰和可售卖模板。</p>
-      <p><b>应用场景：</b></p><ul><li>原型阶段：快速生成 pitch demo、试玩关卡、trailer 里的临时资产。</li><li>量产阶段：生成武器、宝箱、路障、路灯、家具、建筑立面、植被、怪物变体等中低重要度资产。</li><li>角色阶段：用多视图或 T-pose 生成主角 / NPC 基础模型，再做重拓扑、绑骨和动画。</li><li>UGC / MOD：给创作者提供可直接上传或二次编辑的头像、皮肤、地图组件和装饰件。</li><li>资产商店：制作低模包、风格化道具包、场景包、怪物包和主题化模板。</li></ul><p><b>产业背景：</b>游戏产业已经从“大作自研美术”扩展到“自制 + 外包 + 资产商店 + UGC 创作”混合模式；Unity Asset Store、Fab / Unreal 生态和大量独立开发工具链，把“买资产、拼资产、改资产”变成常态。</p><p><b>痛点需求：</b>实时游戏资产不能把几十万到 200 万面的高模直接绑定或进引擎；普通道具优先采用 Smart Mesh 智能网格 P2.0 的原生四边面或三角面低模直出，重要资产再做减面 / 重拓扑，并进入绑定、动画、LOD、碰撞体和引擎测试流程。P2.0 支持三角面最高 50K、原生四边面最高 25K，在可控面数下输出规整 edge loop，便于后续 LOD 与游戏生产。需要补充的是UE引擎nanite功能支持，H3.1的200w面高模可直接作为高规格静态资产来源，减少传统高模到低模再烘焙法线的依赖。</p></div>
+      <p><b>应用场景：</b></p><ul><li>原型阶段：快速生成 pitch demo、试玩关卡、trailer 里的临时资产。</li><li>量产阶段：生成武器、宝箱、路障、路灯、家具、建筑立面、植被、怪物变体等中低重要度资产。</li><li>角色阶段：用多视图或 T-pose 生成主角 / NPC 基础模型，再做重拓扑、绑骨和动画。</li><li>UGC / MOD：给创作者提供可直接上传或二次编辑的头像、皮肤、地图组件和装饰件。</li><li>资产商店：制作低模包、风格化道具包、场景包、怪物包和主题化模板。</li></ul><p><b>产业背景：</b>游戏产业已经从“大作自研美术”扩展到“自制 + 外包 + 资产商店 + UGC 创作”混合模式；Unity Asset Store、Fab / Unreal 生态和大量独立开发工具链，把“买资产、拼资产、改资产”变成常态。</p><p><b>痛点需求：</b>如果不是UE引擎并且面向PC平台，实时游戏资产不能把几十万到 200 万面的高模直接绑定或进引擎；普通道具优先采用P2.0 的原生四边面或三角面低模直出，重要资产用H3.1生成高模再做减面 / 重拓扑作为低模烘焙源，并进入绑定、动画、LOD、碰撞体和引擎测试流程。需要补充的是UE引擎nanite功能支持，H3.1的200w面高模可直接作为高规格静态资产来源，减少传统高模到低模再烘焙法线的依赖。</p>
+<P><strong>传统游戏管线中UV和贴图痛点(Smart UV和去光贴图解决)</strong><ul><li>UV接缝位置靠人工判断，常落在脸部、外露面或变形区接缝、色差、法线断裂，返工到贴图阶段才暴露</li>
+     <li>自动展开容易拉伸、碎片化，UV 利用率低纹理细节被拉花；同等清晰度下需要更大贴图，增加显存与包体</li> 
+     <li>AI/扫描模型面数高、拓扑杂乱常规 UV 工具算得慢、结果不稳定，技术美术需要反复清理</li>
+     <li>参考图自带阴影、高光、环境色烘进 Base Color 后，资产进引擎会“二次受光”，显脏、难统一</li></ul>
+   </P>
+    </div>
 
     <div class="lane"><h3>消费端</h3><p><b>用户画像：</b>独立游戏主创、发行 / 运营团队、关卡设计师、技术美术、虚拟世界搭建者、UGC 买家、MOD 玩家、VRChat / avatar 创作者、教育用户和普通玩家。</p><p><b>应用场景：</b></p>
       <ul><li>直播 / 社媒：创作者用游戏角色和场景做短视频、封面、虚拟直播背景。</li>
@@ -379,11 +385,6 @@
       <div class="branch"><strong>UE / PC / 主机</strong>可以更高精，但仍要做重拓扑、LOD 和材质规范。</div>
       <div class="branch"><strong>UGC / avatar</strong>更重视骨骼规范、可换装、平台上传限制和授权安全。</div>
     </div>
-    <P><h4>传统游戏管线中UV和贴图痛点(P2.0解决)</h4><li>UV接缝位置靠人工判断，常落在脸部、外露面或变形区接缝、色差、法线断裂，返工到贴图阶段才暴露</li>
-     <li>自动展开容易拉伸、碎片化，UV 利用率低纹理细节被拉花；同等清晰度下需要更大贴图，增加显存与包体</li> 
-     <li>AI/扫描模型面数高、拓扑杂乱常规 UV 工具算得慢、结果不稳定，技术美术需要反复清理</li>
-     <li>参考图自带阴影、高光、环境色烘进 Base Color 后，资产进引擎会“二次受光”，显脏、难统一</li>
-   </P>
   </div>
   <div class="pipeline-map">
     <h3>流程管线 × 产品卖点对应</h3>
@@ -410,7 +411,7 @@
         <div class="track-label">角色 / 可动画资产管线</div>
         <div class="stage">T-pose 参考图</div>
         <div class="stage">Smart Mesh 智能网格</div>
-        <div class="stage">贴图生成与一致性编辑调整</div>
+        <div class="stage">贴图生成与局部编辑（也适配智能UV）</div>
         <div class="stage">绑骨与动画预设库</div>
         <div class="stage">FBX 导出 / 桥接到引擎</div>
       </div>
@@ -418,8 +419,8 @@
         <div class="track-label">对应卖点</div>
         <div class="selling-point"><strong>文字/多视图/生成模型</strong>可以勾选T-pose更好约束生成效果，便于绑骨</div>
         <div class="selling-point"><strong>Smart Mesh 智能网格</strong>角色资产可按实时资产思路生成原生四边面低模最高 25K，edge loop 规整，便于后续制作。【特别说明UE的nanite支持骨骼动画，H3.1可用于高精度模型和作为烘焙来源】</div>
-        <div class="selling-point"><strong>局部调整 & 4K/8K贴图</strong>对称性 / 比例调整 / 局部编辑，以控制角色一致性，局部重试，不影响整体生成结果</div>
-        <div class="selling-point"><strong>绑骨与动画</strong>目前支持 T-pose 人类和标准站立姿势的四足动物，并且有五套绑骨预设。支持文字描述生成 1-10s 动画，连续动画编排，AI 动作库等功能</div>
+        <div class="selling-point"><strong>局部调整 & 4K/8K贴图&智能UV</strong>局部编辑重新布线，以控制角色一致性，局部重试，不影响整体生成结果。可生成去光贴图，适配风格化模型，智能UV自动判定接缝位置，一键展开干净 UV支持重拆</div>
+        <div class="selling-point"><strong>绑骨与动画</strong>目前支持 T-pose 人类和标准站立姿势的四足动物，并且有绑骨预设支持ActorCore, Mixamo, UE5 Mannequin，VRM 1.0 Humanoid，Unity Humanoid Compatible等平台。支持文字描述生成 1-10s 动画，连续动画编排，AI 动作库等功能</div>
         <div class="selling-point"><strong>FBX 导出 / 桥接到引擎</strong>已绑骨和添加动作后可选择导出带有骨骼和动画的FBX，并桥接至其他DCC平台进行后续编辑，支持 Blender / Mixamo等适配格式</div>
       </div>
     </div>
@@ -522,7 +523,8 @@
   <div class="lane-grid print-intro-grid">
     <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>VFX 团队、动画工作室、广告制作公司、短视频团队、虚拟人团队、虚拟制片团队、概念设计师、导演组预演团队、品牌内容工作室。</p>
       <p><b>做什么：</b>影视团队做怪物、道具、场景、角色替身和镜头预演资产；动画团队做风格化角色和环境；广告公司做产品广告里的夸张道具、虚拟场景和社媒短片；虚拟人团队做 avatar、服饰、舞台和表演道具。</p>
-      <p><b>应用场景：</b></p><ul><li>前期开发：概念图转 3D，用于导演沟通、分镜、预演和 pitch。</li><li>VFX 制作：怪物、飞船、武器、雕像、场景碎片、背景建筑和镜头道具。</li><li>动画短片：风格化角色、宠物、表情道具、场景资产和循环动作。</li><li>广告 / MV：品牌产品放大展示、超现实场景、舞台装置和动态海报。</li><li>虚拟人 / VTuber：角色配饰、直播场景、节日皮肤、粉丝礼物和活动素材。</li></ul><p><b>产业背景：</b>虚拟制片、实时渲染和短视频广告让影视资产需求从“大项目少量高精”变成“多项目、高频、快速迭代”；小团队也开始用 UE、Blender、C4D 和 AI 工具完成接近工作室级的视觉内容。</p><p><b>痛点需求：</b>模型要服务绑定、动画、灯光、渲染和合成；写实镜头需要高精度细节和 PBR 材质，可动画资产仍需关注拓扑、骨骼适配、表情空间、贴图清晰度和版权安全。目的是降低概念验证成本、加快资产试错、让导演和客户更早看到可旋转的 3D 形态，并把模型顺利交给绑定、动画、灯光、渲染和合成团队。</p></div>
+      <p><b>应用场景：</b></p><ul><li>前期开发：概念图转 3D，用于导演沟通、分镜、预演和 pitch。</li><li>VFX 制作：怪物、飞船、武器、雕像、场景碎片、背景建筑和镜头道具。</li><li>动画短片：风格化角色、宠物、表情道具、场景资产和循环动作。</li><li>广告 / MV：品牌产品放大展示、超现实场景、舞台装置和动态海报。</li><li>虚拟人 / VTuber：角色配饰、直播场景、节日皮肤、粉丝礼物和活动素材。</li></ul><p><b>产业背景：</b>虚拟制片、实时渲染和短视频广告让影视资产需求从“大项目少量高精”变成“多项目、高频、快速迭代”；小团队也开始用 UE、Blender、C4D 和 AI 工具完成接近工作室级的视觉内容。</p><p><b>痛点需求：</b>模型要服务绑定、动画、灯光、渲染和合成；写实镜头需要高精度细节和 PBR 材质，可动画资产仍需关注拓扑、骨骼适配、表情空间、贴图清晰度和版权安全。目的是降低概念验证成本、加快资产试错、让导演和客户更早看到可旋转的 3D 形态，并把模型顺利交给绑定、动画、灯光、渲染和合成团队。目前P2.0模型精度无法满足影视的主角资产精度需求，所以一般是在前期预演或道具资产。但也有行业如动画番剧需要大量模型资产，要跨集服用，只要 UV 改动，旧贴图、材质遮罩、污渍、发光纹路和镜头资产都可能需要回归检查。因为走UE流程如凡人修仙传，斗罗大陆等，时间排期紧张要实时预览、反复改镜头、持续迭代，UV/贴图问题会更早、更频繁地暴露。近景脸部、手持法器、服装刺绣、盔甲特写，对接缝、拉伸、色差非常敏感。UE 的实时光照会放大“脏贴图”，所以针对3D动画番剧番剧，可以主推P2.0和smart UV，去光贴图，自动绑定，自动动画等</p></div>
+    
     <div class="lane"><h3>消费端</h3><p><b>用户画像：</b>广告主、品牌方、动画观众、虚拟主播粉丝、游戏和动漫粉丝、短视频用户、活动观众、IP 衍生品买家。</p><p><b>为什么买：</b>品牌方买的是传播效率和视觉记忆点；粉丝买的是角色陪伴、身份认同和收藏价值；内容团队买的是更短周期内形成“看起来完成度高”的画面。</p><p><b>应用场景：</b></p><ul><li>角色短片：原创角色、宠物、怪物、吉祥物和剧情道具。</li><li>虚拟偶像 / VTuber：直播间背景、服饰配件、舞台、节日皮肤和粉丝互动礼物。</li><li>广告片：产品拟人化、包装变形、超现实空间和 3D 动态海报。</li><li>社媒传播：TikTok / YouTube Shorts / B站 / 小红书里的循环动画、封面和互动素材。</li><li>IP 衍生：把角色资产延展为头像、贴纸、周边概念、AR 滤镜或 3D 打印摆件。</li></ul><p><b>消费市场背景：</b>短视频广告、虚拟主播和粉丝经济把 3D 角色资产的消费门槛降低，视觉内容越来越追求高频更新和可复用角色，而不是只在院线级项目里使用。</p><p><b>需求原因：</b>买的是角色记忆点、画面完成度和传播效果；对画面完成度敏感，最怕角色不稳定、模型不能动、贴图粗糙、风格不统一或侵权风险影响上线。愿意为喜欢的角色和 IP 付费、习惯通过短视频和直播接触 3D 内容；年轻用户更接受虚拟偶像、虚拟宠物和数字周边。</p></div>
   </div>
   <div class="pipeline-map traditional-pipeline">
@@ -580,22 +582,22 @@
         <div class="track-label">角色绑定动画管线</div>
         <div class="stage">T-pose 人类 / 标准姿态四足动物</div>
         <div class="stage">Smart Mesh智能网格</div>
-        <div class="stage">绑骨</div>
-        <div class="stage">动作动画</div>
+        <div class="stage">贴图生成和UV</div>
+        <div class="stage">绑骨与动作动画</div>
         <div class="stage">FBX 导出</div>
       </div>
       <div class="pipeline-track">
         <div class="track-label">对应卖点</div>
         <div class="selling-point"><strong>文字/多视图生成模型</strong>可以勾选T-pose更好约束生成效果，便于绑骨</div>
         <div class="selling-point"><strong>Smart Mesh 智能网格生成</strong>角色资产可按实时资产思路生成原生四边面低模最高 25K，edge loop 规整，便于后续动画制作</div>
-        <div class="selling-point"><strong>骨骼绑定</strong>目前支持 T-pose 人类和标准站立姿势的四足动物，并且有五套绑骨预设。</div>
-        <div class="selling-point"><strong>100+动作预设</strong>支持文字描述生成 1-10s 动画，连续动画编排，AI 动作库等功能</div>
+        <div class="selling-point"><strong>4K/8K贴图&智能UV</strong>可生成去光贴图，适配风格化模型，智能UV自动判定接缝位置，一键展开干净 UV支持重拆</div>
+        <div class="selling-point"><strong>骨骼绑定和100+动作预设</strong>目前支持 T-pose 人类和标准站立姿势的四足动物，并且有五套绑骨预设。支持文字描述生成 1-10s 动画，连续动画编排，AI 动作库等功能</div>
         <div class="selling-point"><strong>导出骨骼和动画</strong>FBX 可按软件选择适合 Blender、Mixamo、3ds Max 的导出格式</div>
       </div>
     </div>
   </div>
   <div class="feature-grid feature-grid-single">
-    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li>智能网格（Smart Mesh）：用于生成拓扑角色后修改，但低面数无法满足高保真细节和影视级渲染，目前在质量要求不高的小成本网络影视剧项目中巨多。</li><li>非 T-pose 人类 / 非标准站立四足模型绑骨：不在当前绑骨适用范围内</li><li>STL / 3MF：不支持导出骨骼和动画，不适合作为影视动画交付格式</li><li>智能拆件与补全功能：除非项目需要，一般影视不需要单独部位</li></ul></div>
+    <div class="feature-card"><strong>不常用功能与原因</strong><ul><li>智能网格（Smart Mesh）：用于生成拓扑角色后修改，但低面数无法满足高保真细节和影视级渲染，目前在质量要求不高的小成本网络影视剧项目中或UE流程番剧居多。</li><li>非 T-pose 人类 / 非标准站立四足模型绑骨：不在当前绑骨适用范围内</li><li>STL / 3MF：不支持导出骨骼和动画，不适合作为影视动画交付格式</li><li>智能拆件与补全功能：除非项目需要，一般影视不需要单独部位</li></ul></div>
   </div>
   <div class="region"><strong>地区情况</strong><p>日本适合二次元、怪物、三渲二和 VTuber；韩国适合高完成度角色短片和团队提效；法国偏作者感和艺术动画；北美适合独立短片和游戏宣传。</p></div>
       <figure class="industry-visual"><img src="image/4.png" alt="影视动画行业配图"><figcaption>控制网格服务变形，渲染阶段再细分</figcaption></figure>
@@ -667,11 +669,11 @@
 <section class="card section" id="commerce">
   <div class="section-head"><div><span class="section-no">06 / PRODUCT COMMERCE</span><h2>产品电商</h2></div><p>核心需求是“商品可信展示、高清 PBR、轻量 Web 预览，以及平台兼容性”。最终交付：渲染图 / GLB / USDZ。</p></div>
   <div class="lane-grid print-intro-grid">
-    <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>独立站卖家、电商品牌、广告代理、产品摄影和渲染团队、家居 / 美妆 / 3C 品牌、Shopify / Amazon 卖家、跨境电商团队、包装设计公司。</p><p><b> 做什么：</b>品牌方把商品做成 3D 主图、详情页素材、360 度展示、颜色变体和 AR 预览；代理公司做广告短视频和社媒素材；跨境卖家把新品在实物拍摄前先做视觉测试；包装团队做瓶罐盒袋的材质和结构展示。</p><p><b>应用场景：</b></p><ul><li>商品主图：家居、鞋包、首饰、美妆、3C、玩具、礼品和小家电。</li><li>详情页：拆解结构、材质特写、尺寸对比、卖点动画和使用场景。</li><li>变体展示：颜色、材质、花纹、套装、配件和限定款批量生成。</li><li>Web 3D / AR：网页 360 度查看、手机 AR 试摆、试戴 / 试放和互动配置器。</li><li>广告内容：短视频、产品爆炸图、包装转场、众筹页和新品预售页面。</li></ul><p><b>产业背景：</b>电商竞争从“有图”升级到“可交互、可试摆、可配置”；Shopify、Apple Quick Look、Google model-viewer 等生态让 GLB / USDZ 商品资产更容易进入网页和移动端。</p><p><b>痛点需求：</b>需要同时满足高质量商品展示和手机端轻量化实时加载：近景要有清晰纹理和 PBR，网页端要控制面数和贴图大小，格式要兼容 GLB / USDZ / FBX，且不能夸大实物效果。目的是降低摄影棚、样品寄送和重拍成本，提升电商转化，减少因尺寸 / 材质误解带来的退货，并让同一 3D 资产复用于主图、广告、AR 和配置器。</p></div>
+    <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>独立站卖家、电商品牌、广告代理、产品摄影和渲染团队、家居 / 美妆 / 3C 品牌、Shopify / Amazon 卖家、跨境电商团队、包装设计公司。</p><p><b> 做什么：</b>品牌方把商品做成 3D 主图、详情页素材、360 度展示、颜色变体和 AR 预览；代理公司做广告短视频和社媒素材；跨境卖家把新品在实物拍摄前先做视觉测试；包装团队做瓶罐盒袋的材质和结构展示。</p><p><b>应用场景：</b></p><ul><li>商品主图：家居、鞋包、首饰、美妆、3C、玩具、礼品和小家电。</li><li>详情页：拆解结构、材质特写、尺寸对比、卖点动画和使用场景。</li><li>变体展示：颜色、材质、花纹、套装、配件和限定款批量生成。</li><li>Web 3D / AR：网页 360 度查看、手机 AR 试摆、试戴 / 试放和互动配置器。</li><li>广告内容：短视频、产品爆炸图、包装转场、众筹页和新品预售页面。</li></ul><p><b>产业背景：</b>电商竞争从“有图”升级到“可交互、可试摆、可配置”；Shopify、Apple Quick Look、Google model-viewer 等生态让 GLB / USDZ 商品资产更容易进入网页和移动端。</p><p><b>痛点需求：</b>需要同时满足高质量商品展示和手机端轻量化实时加载：近景要有清晰纹理和 PBR，网页端要控制面数和贴图大小，格式要兼容 GLB / USDZ / FBX，且不能夸大实物效果。目的是降低摄影棚、样品寄送和重拍成本，提升电商转化，减少因尺寸 / 材质误解带来的退货，并让同一 3D 资产复用于主图、广告、AR 和配置器。一旦消费者可旋转、放大、换颜色/材质，或品牌希望把同一商品放入不同光照场景，就需要 UV 和干净的 PBR 贴图。</p></div>
     <div class="lane"><h3>消费端</h3><p><b>用户画像：</b>线上购物用户、家居买家、鞋包配饰买家、美妆用户、礼品用户、众筹支持者、定制商品买家、对图片真实性敏感的高客单用户。</p><p><b>应用场景：</b></p><ul><li>家居摆放：沙发、灯具、柜子、桌椅、装饰画和园艺用品。</li><li>穿戴查看：鞋、包、眼镜、首饰、手表和帽子多角度检查。</li><li>美妆包装：口红、香水、护肤品瓶罐、礼盒包装和限定套装。</li><li>礼品定制：刻字、照片浮雕、宠物纪念、婚礼礼物和企业礼品。</li><li>众筹 / 预售：买家在没有现货时通过 3D 图理解产品结构和真实体积。</li></ul><p><b>消费市场背景：</b>线上购物无法触摸实物，退货、差评和客服问题常来自尺寸、色差、质感误解；3D / AR 商品展示能把“看图猜”变成“旋转看、放进家里看、按配置看”。</p><p><b>需求原因：</b>确认尺寸、材质、颜色和摆放效果，降低图片不可信带来的犹豫；最怕模型太假、加载太慢、颜色和实物不一致或 AR 尺寸不准。</p></div>
   </div>
   <div class="pipeline-map traditional-pipeline">
-    <h3>传统三维管线</h3>
+    <h3>传统三维管线（还有以C4D流程为主的电商包装和广告CG）</h3>
     <div class="pipeline-pair">
       <div class="pipeline-track">
         <div class="track-label">建模与材质</div>
@@ -718,13 +720,15 @@
         <div class="stage">商品图</div>
         <div class="stage">Smart Mesh 智能网格</div>
         <div class="stage">8K贴图 & PBR纹理</div>
+        <div class="stage">UV调整</div>
         <div class="stage">GLB / USDZ</div>
       </div>
       <div class="pipeline-track">
         <div class="track-label">对应卖点</div>
         <div class="selling-point"><strong>Smart Mesh 智能网格生成</strong>用于快速生成、实时加载的商品预览 Web AR资产</div>
         <div class="selling-point"><strong>面数与拓扑设置</strong>原生四边面最高 25K、三角面最高 50K，适合 Web 应用和快速加载</div>
-        <div class="selling-point"><strong>8K贴图 / PBR</strong>最高支持8K贴图，控制贴图质量分辨率以及是否生成 PBR，导出时按平台体积和清晰度选择</div>
+        <div class="selling-point"><strong>8K贴图 / PBR</strong>最高支持8K贴图，控制贴图质量分辨率以及是否生成 PBR，导出时按平台体积和清晰度选择，如果需要导入不同光照场景，可以到处无光照贴图</div>
+        <div class="selling-point"><strong>Smart UV</strong>智能UV自动判定接缝位置，一键展开干净 UV支持重拆，适合商品换面料、刻字，换颜色换材质等重复使用场景</div>
         <div class="selling-point"><strong>GLB / USDZ</strong>GLB 适用于 Web，内嵌纹理；USDZ 适合 iOS AR Quick Look</div>
       </div>
     </div>
@@ -739,7 +743,7 @@
 </section>
 
 <section class="card section" id="industrial">
-  <div class="section-head"><div><span class="section-no">07 / INDUSTRIAL DESIGN</span><h2>工业设计</h2></div><p>核心需求是“高保真概念、重拓扑、线框展示”。最终交付：交付demo预览，渲染评审或跨平台展示资产。还有汽车的HMI</p></div>
+  <div class="section-head"><div><span class="section-no">07 / INDUSTRIAL DESIGN</span><h2>工业设计</h2></div><p>核心需求是“高保真概念、重拓扑、线框展示”。最终交付：交付demo预览，渲染评审或跨平台展示资产，还有汽车的HMI</p></div>
   <div class="lane-grid print-intro-grid">
     <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>工业设计师、产品经理、结构工程师、汽车 / 机械团队、消费电子团队、家具工厂、硬件创业团队、展会演示团队、售前技术团队。</p><p><b>做什么：</b>设计师做产品外观和系列概念；产品经理做评审用视觉样机；工程团队做非制造级展示模型、培训模型和部件说明；销售团队做展会、招投标和客户沟通用 3D 演示。</p><p><b>应用场景：</b></p><ul><li>消费电子：耳机、音箱、遥控器、按钮、接口、外壳和桌面配件。</li><li>汽车 / 出行：外观概念、内饰组件、轮毂、座椅、仪表、充电桩和展示模型。</li><li>机械设备：罩壳、控制面板、机械臂外观、传感器、工具头和培训演示件。</li><li>家具 / 家电：椅子、灯具、小家电、收纳件和系列化造型探索。</li><li>市场测试：同一产品多风格、多配色、多比例生成，用于内部评审和用户调研。</li><li>汽车HMI：当实体车辆发生任何变化（例如打开车门）都会通过仪表板上显示的3D模型实时呈现出来。</li>
     </ul>
@@ -867,7 +871,7 @@
 <section class="card section" id="arvr">
   <div class="section-head"><div><span class="section-no">09 / AR / VR</span><h2>AR / VR</h2></div><p>核心需求是“低面数、轻量可实时加载资产、导出GLB / USDZ”。最终交付：漫游空间资产、渲染图 / GLB / USDZ。</p></div>
   <div class="lane-grid print-intro-grid">
-    <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>XR 应用团队、Unity / UE 开发者、Vision Pro / Quest 内容团队、虚拟偶像团队、电商品牌、展厅团队、工业培训团队、教育机构、VRChat / 社交 VR 创作者。</p><p><b>做什么：</b>XR 团队做可实时加载的空间道具、培训模型和交互资产；电商品牌做 AR 商品预览；虚拟社交创作者做 avatar、服饰、房间装饰和世界组件；企业团队做培训、展厅、远程协作和数字孪生展示。</p><p><b>应用场景：</b></p><ul><li>AR 商品：家具试摆、鞋包查看、美妆包装、3C 产品和家电展示。</li><li>VR 空间：展厅、培训场景、会议空间、游戏关卡、社交房间和品牌体验店。</li><li>avatar：人物、四足宠物、服饰、配饰、舞台、表情道具和粉丝互动资产。</li><li>工业培训：设备结构、操作步骤、危险场景、安全演练和维修说明。</li><li>教育展陈：博物馆、学校实验、城市规划、文旅导览和沉浸式课程。</li></ul><p><b>产业背景：</b>Quest、Vision Pro、移动 AR 和 WebXR 推动空间内容需求增长，但硬件性能、加载速度和用户眩晕问题让“轻量可实时运行”比单纯高精度更重要。</p><p><b>痛点需求：</b>VR / AR 对帧率、加载速度和交互稳定性要求高，必须优先轻量化实时资产：减面、重拓扑、控制贴图、合并材质、检查尺度和碰撞，再导出 GLB 或 USDZ。但如果是渲染好的VR/AR影片,需求又变成资产精细度要求</p></div>
+    <div class="lane"><h3>生产端</h3><p><b>用户画像：</b>XR 应用团队、Unity / UE 开发者、Vision Pro / Quest 内容团队、虚拟偶像团队、电商品牌、展厅团队、工业培训团队、教育机构、VRChat / 社交 VR 创作者。</p><p><b>做什么：</b>XR 团队做可实时加载的空间道具、培训模型和交互资产；电商品牌做 AR 商品预览；虚拟社交创作者做 avatar、服饰、房间装饰和世界组件；企业团队做培训、展厅、远程协作和数字孪生展示。</p><p><b>应用场景：</b></p><ul><li>AR 商品：家具试摆、鞋包查看、美妆包装、3C 产品和家电展示。</li><li>VR 空间：展厅、培训场景、会议空间、游戏关卡、社交房间和品牌体验店。</li><li>avatar：人物、四足宠物、服饰、配饰、舞台、表情道具和粉丝互动资产。</li><li>工业培训：设备结构、操作步骤、危险场景、安全演练和维修说明。</li><li>教育展陈：博物馆、学校实验、城市规划、文旅导览和沉浸式课程。</li></ul><p><b>产业背景：</b>Quest、Vision Pro、移动 AR 和 WebXR 推动空间内容需求增长，但硬件性能、加载速度和用户眩晕问题让“轻量可实时运行”比单纯高精度更重要。</p><p><b>痛点需求：</b>VR / AR 对帧率、加载速度和交互稳定性要求高，必须优先轻量化实时资产：减面、重拓扑、控制贴图、合并材质、检查尺度和碰撞，再导出 GLB 或 USDZ。实时的XR对UV要求比较高，贴图尺寸、显存、加载速度、Mipmap 漏色、法线贴图与光照表现都受 UV 影响。移动端尤其需要高利用率、少浪费。但如果是渲染好的VR/AR影片,需求又变成资产精细度要求。在VTuber/虚拟人行业里对要换装、换肤、局部妆容、表情贴图或跨平台导入时，需要干净、可控且尽量稳定的 UV。</p></div>
     <div class="lane"><h3>消费端</h3><p><b>用户画像：</b>Quest / Vision Pro / 移动 AR 用户、虚拟社交用户、VRChat 玩家、购物用户、品牌粉丝、企业培训学员、展厅参观者和学生。</p><p><b>应用场景：</b></p><ul><li>虚拟空间装饰：房间、展厅、舞台、桌面摆件、宠物和互动道具。</li><li>AR 商品预览：把家具放到家里、把鞋包配饰放到身体或桌面环境里看。</li><li>VRChat / avatar：形象、服装、饰品、动作、表情道具和世界组件。</li><li>培训体验：工厂设备、医疗演示、安全演练、维修流程和新员工培训。</li><li>展厅体验：品牌快闪、博物馆、地产沙盘、车展和教育互动屏。</li></ul><p><b>消费市场背景：</b>空间计算让 3D 资产从“屏幕里看”变成“放在现实或虚拟空间里用”；但用户耐心低，加载慢、卡顿、比例不准和交互不自然会快速破坏体验。</p><p><b>需求原因：</b>买的是沉浸感、互动感和身份表达；最怕资产太重导致掉帧、贴图糊、手机打不开、USDZ / GLB 不兼容或 avatar 绑定失败。</p></div>
   </div>
   <div class="pipeline-map traditional-pipeline">
@@ -907,13 +911,15 @@
         <div class="stage">图片 / 文本生成3D</div>
         <div class="stage">Smart Mesh 智能网格</div>
         <div class="stage">生成纹理贴图</div>
+        <div class="stage">UV</div>
         <div class="stage">GLB / USDZ</div>
       </div>
       <div class="pipeline-track">
         <div class="track-label">对应卖点</div>
         <div class="selling-point"><strong>Smart Mesh 智能网格生成</strong>秒级生成规整低模资产，便于批量化生产，原生四边面 / 三角面可选</div>
         <div class="selling-point"><strong>面数与拓扑设置</strong>三角面最高 50K、原生四边面最高 25K，适配 Web / AR / VR 性能预算</div>
-        <div class="selling-point"><strong>生成纹理贴图</strong>基于参考图生成不同分辨率纹理贴图，支持2K-8K，根据平台要求加载性能选择</div>
+        <div class="selling-point"><strong>生成纹理贴图</strong>基于参考图生成不同分辨率纹理贴图,也可以生成无光贴图便于后续引擎实时光照，支持2K-8K，根据平台要求加载性能选择</div>
+        <div class="selling-point"><strong>Smart UV</strong>智能UV自动判定接缝位置，一键展开干净 UV支持重拆</div>
         <div class="selling-point"><strong>导出格式</strong>GLB内嵌纹理，适用于 WebXR、model-viewer 和 AR / VR 预览；如进入引擎项目，按目标平台的导入规范处理，USDZ 为iOS AR Quick Look 侧重格式</div>
       </div></div>
    
